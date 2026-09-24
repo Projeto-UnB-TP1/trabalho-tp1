@@ -2,9 +2,10 @@
 
 using namespace std;
 
-class Senha{
+class Email {
     private:
-        static const int TamanPermitido = 5;
+        static const int LimiteLocal = 64;
+        static const int LimiteDominio = 255;
         string valor;
         bool validar(string valor);
     public:
