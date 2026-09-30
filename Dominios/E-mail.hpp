@@ -1,3 +1,5 @@
+#ifndef EMAIL_HPP
+#define EMAIL_HPP
 #include <string>
 
 using namespace std;
@@ -12,3 +14,4 @@ class Email {
         bool setValor(string);
         string getValor();
 };
+#endif

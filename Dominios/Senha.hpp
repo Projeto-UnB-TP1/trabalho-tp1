@@ -1,3 +1,5 @@
+#ifndef SENHA_HPP
+#define SENHA_HPP
 #include <string>
 
 using namespace std;
@@ -11,3 +13,4 @@ class Senha{
         bool setValor(string);
         string getValor();
 };
+#endif
