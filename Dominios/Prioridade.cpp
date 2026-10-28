@@ -1,14 +1,14 @@
 #include "Prioridade.hpp"
-#include <stdexcept>
 
+using namespace std;
 
-void Prioridade::setValor(std::string valor){
-    if(valor!= "ALTA" && valor != "MEDIA" && valor != "BAIXA"){
-        throw std:: invalid_argument("Prioridade invalida");
-    } 
+void Prioridade::setValor(string valor){
+    if(valor != "ALTA" && valor != "MEDIA" && valor != "BAIXA"){
+        throw invalid_argument("Prioridade invalida. Valores aceitos: ALTA, MEDIA, BAIXA.");
+    }
     this->valor = valor;
 }
 
-std:: string Prioridade:: getValor(){
+string Prioridade::getValor() const {
     return valor;
 }

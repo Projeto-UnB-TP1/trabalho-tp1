@@ -2,15 +2,16 @@
 #define PAPEL_HPP
 
 #include <string>
+#include <stdexcept>
 
 class Papel{
-  private: 
-  std:: string valor;
+  private:
+  std::string valor;
 
-  public: 
+  public:
 
-  void setValor(std:: string valor);
-  std:: string getValor() const;
+  void setValor(std::string valor);
+  std::string getValor() const;
 };
 
 #endif

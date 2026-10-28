@@ -1,18 +1,14 @@
-#include <stdexcept>
 #include "Papel.hpp"
 
 using namespace std;
 
-
-void Papel:: setValor(string valor){
+void Papel::setValor(string valor){
     if(valor != "GESTOR" && valor != "DESENVOLVEDOR"){
-       throw:: invalid_argument("Papel invalido");
+        throw invalid_argument("Papel invalido. Valores aceitos: GESTOR, DESENVOLVEDOR.");
     }
     this->valor = valor;
 }
 
-std:: string Papel:: getValor() const {
+string Papel::getValor() const {
     return valor;
 }
-
-
