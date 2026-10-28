@@ -31,4 +31,4 @@ public:
     std::string getValor() const;
 };
 
-#endif // TEXTO_HPP
+#endif

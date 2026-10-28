@@ -28,4 +28,4 @@ public:
     std::string getValor() const;
 };
 
-#endif // TAMANHO_HPP
+#endif

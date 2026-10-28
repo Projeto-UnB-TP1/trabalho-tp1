@@ -1,8 +1,8 @@
 #ifndef INTERFACES_HPP
 #define INTERFACES_HPP
 
-#include "Dominios.hpp" // Assuma que este header inclui as suas classes de domínio
-#include "Entidades.hpp" // Assuma que este header inclui as suas classes de entidade
+#include "Dominios.hpp"
+#include "Entidades.hpp"
 
 /**
  * @class IServicoPessoa
@@ -28,4 +28,4 @@ public:
     virtual ~IApresentacaoPessoa() {}
 };
 
-#endif // INTERFACES_HPP
+#endif

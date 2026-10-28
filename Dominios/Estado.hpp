@@ -25,9 +25,9 @@ using namespace std;
  * Estado estado;
  * try {
  *     estado.setValor("FAZENDO");
- *     string atual = estado.getValor();   // "FAZENDO"
+ *     string atual = estado.getValor();
  * } catch (const invalid_argument& e) {
- *     // valor fora do formato permitido
+ *
  * }
  * @endcode
  */
@@ -39,24 +39,23 @@ class Estado{
         /**
          * @brief Verifica se um texto é um estado válido.
          * @param valor Texto a ser verificado.
-         * @return true se o texto for "A FAZER", "FAZENDO" ou "FEITO"; false caso contrário.
+         * @throws invalid_argument se o texto não for "A FAZER", "FAZENDO" ou "FEITO".
          */
-        bool validar(string valor);
+        void validar(string valor);
 
     public:
         /**
          * @brief Atribui um valor ao estado.
          * @param valor Texto com o novo estado: "A FAZER", "FAZENDO" ou "FEITO".
-         * @return true se o valor foi atribuído com sucesso.
          * @throws invalid_argument se o valor não estiver no formato válido.
          *         Nesse caso, o valor anteriormente armazenado não é alterado.
          */
-        bool setValor(string valor);
+        void setValor(string valor);
 
         /**
          * @brief Obtém o valor armazenado.
          * @return Texto com o estado atual.
          */
-        string getValor();
+        string getValor() const;
 };
 #endif

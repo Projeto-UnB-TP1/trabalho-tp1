@@ -3,22 +3,17 @@
 
 using namespace std;
 
-string Estado::getValor(){
-    return valor;
-}
-
-bool Estado::validar(string valor){
-    if (valor == "A FAZER" || valor == "FAZENDO" || valor == "FEITO"
-    ){
-        return true;
-    }    
-    return false;
-}
-
-bool Estado::setValor(string valor){
-    if (validar(valor)){
-        this->valor = valor;
-        return true;
+void Estado::validar(string valor){
+    if (valor != "A FAZER" && valor != "FAZENDO" && valor != "FEITO"){
+        throw invalid_argument("Estado invalido. Valores aceitos: A FAZER, FAZENDO, FEITO.");
     }
-    throw invalid_argument("Estado invalido");
+}
+
+void Estado::setValor(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+string Estado::getValor() const {
+    return valor;
 }

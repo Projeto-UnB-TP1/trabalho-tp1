@@ -5,7 +5,6 @@
 #include <stdexcept>
 #include <string>
 
-// Simulação das inclusões das suas classes de Entidade
 #include "CartaoDeAtividade.hpp"
 #include "Quadro.hpp"
 
@@ -78,4 +77,4 @@ public:
     double calcularLeadTimeMedio(const std::vector<CartaoDeAtividade>& cartoesNoQuadro) const;
 };
 
-#endif // CNTR_SERVICO_KANBAN_HPP
+#endif

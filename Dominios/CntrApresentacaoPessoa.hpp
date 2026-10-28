@@ -11,7 +11,7 @@
  */
 class CntrApresentacaoPessoa : public IApresentacaoPessoa {
 private:
-    IServicoPessoa* servico; // Depende apenas da interface declarada
+    IServicoPessoa* servico;
 public:
     /**
      * @brief Executa o menu de interação com o usuário.
@@ -29,4 +29,4 @@ inline void CntrApresentacaoPessoa::setServicoPessoa(IServicoPessoa* servico) {
     this->servico = servico;
 }
 
-#endif // CNTR_APRESENTACAO_PESSOA_HPP
+#endif

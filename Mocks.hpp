@@ -3,7 +3,6 @@
 
 #include <string>
 
-// Mocks dos Domínios (caso também não estejam prontos)
 class Estado {
 private:
     std::string valor;
@@ -25,7 +24,6 @@ public:
     static Timestamp agora() { return Timestamp(); }
 };
 
-// Mocks das Entidades
 class Quadro {
 private:
     Limite limite;
@@ -47,4 +45,4 @@ public:
     Timestamp getTermino() const { return termino; }
 };
 
-#endif // MOCKS_HPP
+#endif
