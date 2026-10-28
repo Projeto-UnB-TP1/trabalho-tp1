@@ -1,5 +1,464 @@
 #include "testes.hpp"
 
+const string TUEmail::VALOR_VALIDO = "kaio@unb.br";
+const string TUEmail::VALOR_INVALIDO = ".kaio@unb.br";
+
+void TUEmail::setUp(){
+    email = new Email();
+    estado = SUCESSO;
+}
+
+void TUEmail::tearDown(){
+    delete email;
+}
+
+void TUEmail::testarCenarioValorValido(){
+    try{
+        email->setValor(VALOR_VALIDO);
+        if (email->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUEmail::testarCenarioValorInvalido(){
+    try{
+        email->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (email->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUEmail::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUEstado::VALOR_VALIDO = "FAZENDO";
+const string TUEstado::VALOR_INVALIDO = "PARADO";
+
+void TUEstado::setUp(){
+    estadoDominio = new Estado();
+    estado = SUCESSO;
+}
+
+void TUEstado::tearDown(){
+    delete estadoDominio;
+}
+
+void TUEstado::testarCenarioValorValido(){
+    try{
+        estadoDominio->setValor(VALOR_VALIDO);
+        if (estadoDominio->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUEstado::testarCenarioValorInvalido(){
+    try{
+        estadoDominio->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (estadoDominio->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUEstado::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUIdentificador::VALOR_VALIDO = "ABC123";
+const string TUIdentificador::VALOR_INVALIDO = "AB1234";
+
+void TUIdentificador::setUp(){
+    identificador = new Identificador();
+    estado = SUCESSO;
+}
+
+void TUIdentificador::tearDown(){
+    delete identificador;
+}
+
+void TUIdentificador::testarCenarioValorValido(){
+    try{
+        identificador->setValor(VALOR_VALIDO);
+        if (identificador->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUIdentificador::testarCenarioValorInvalido(){
+    try{
+        identificador->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (identificador->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUIdentificador::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+void TULimite::setUp(){
+    limite = new Limite();
+    estado = SUCESSO;
+}
+
+void TULimite::tearDown(){
+    delete limite;
+}
+
+void TULimite::testarCenarioValorValido(){
+    try{
+        limite->setValor(VALOR_VALIDO);
+        if (limite->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TULimite::testarCenarioValorInvalido(){
+    try{
+        limite->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (limite->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TULimite::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUNome::VALOR_VALIDO = "Kaio Xavier";
+const string TUNome::VALOR_INVALIDO = "Kaio3";
+
+void TUNome::setUp(){
+    nome = new Nome();
+    estado = SUCESSO;
+}
+
+void TUNome::tearDown(){
+    delete nome;
+}
+
+void TUNome::testarCenarioValorValido(){
+    try{
+        nome->setValor(VALOR_VALIDO);
+        if (nome->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUNome::testarCenarioValorInvalido(){
+    try{
+        nome->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (nome->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUNome::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUPapel::VALOR_VALIDO = "GESTOR";
+const string TUPapel::VALOR_INVALIDO = "CHEFE";
+
+void TUPapel::setUp(){
+    papel = new Papel();
+    estado = SUCESSO;
+}
+
+void TUPapel::tearDown(){
+    delete papel;
+}
+
+void TUPapel::testarCenarioValorValido(){
+    try{
+        papel->setValor(VALOR_VALIDO);
+        if (papel->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUPapel::testarCenarioValorInvalido(){
+    try{
+        papel->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (papel->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUPapel::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUPrioridade::VALOR_VALIDO = "ALTA";
+const string TUPrioridade::VALOR_INVALIDO = "URGENTE";
+
+void TUPrioridade::setUp(){
+    prioridade = new Prioridade();
+    estado = SUCESSO;
+}
+
+void TUPrioridade::tearDown(){
+    delete prioridade;
+}
+
+void TUPrioridade::testarCenarioValorValido(){
+    try{
+        prioridade->setValor(VALOR_VALIDO);
+        if (prioridade->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUPrioridade::testarCenarioValorInvalido(){
+    try{
+        prioridade->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (prioridade->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUPrioridade::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUSenha::VALOR_VALIDO = "abc12";
+const string TUSenha::VALOR_INVALIDO = "abcde";
+
+void TUSenha::setUp(){
+    senha = new Senha();
+    estado = SUCESSO;
+}
+
+void TUSenha::tearDown(){
+    delete senha;
+}
+
+void TUSenha::testarCenarioValorValido(){
+    try{
+        senha->setValor(VALOR_VALIDO);
+        if (senha->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUSenha::testarCenarioValorInvalido(){
+    try{
+        senha->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (senha->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUSenha::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUTamanho::VALOR_VALIDO = "GRANDE";
+const string TUTamanho::VALOR_INVALIDO = "ENORME";
+
+void TUTamanho::setUp(){
+    tamanho = new Tamanho();
+    estado = SUCESSO;
+}
+
+void TUTamanho::tearDown(){
+    delete tamanho;
+}
+
+void TUTamanho::testarCenarioValorValido(){
+    try{
+        tamanho->setValor(VALOR_VALIDO);
+        if (tamanho->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUTamanho::testarCenarioValorInvalido(){
+    try{
+        tamanho->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (tamanho->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUTamanho::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUTexto::VALOR_VALIDO = "Texto valido.";
+const string TUTexto::VALOR_INVALIDO = "texto invalido.";
+
+void TUTexto::setUp(){
+    texto = new Texto();
+    estado = SUCESSO;
+}
+
+void TUTexto::tearDown(){
+    delete texto;
+}
+
+void TUTexto::testarCenarioValorValido(){
+    try{
+        texto->setValor(VALOR_VALIDO);
+        if (texto->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUTexto::testarCenarioValorInvalido(){
+    try{
+        texto->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (texto->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUTexto::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
+const string TUTimestamp::VALOR_VALIDO = "29-FEV-2024-13:45";
+const string TUTimestamp::VALOR_INVALIDO = "29-FEV-2023-13:45";
+
+void TUTimestamp::setUp(){
+    timestamp = new Timestamp();
+    estado = SUCESSO;
+}
+
+void TUTimestamp::tearDown(){
+    delete timestamp;
+}
+
+void TUTimestamp::testarCenarioValorValido(){
+    try{
+        timestamp->setValor(VALOR_VALIDO);
+        if (timestamp->getValor() != VALOR_VALIDO)
+            estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        estado = FALHA;
+    }
+}
+
+void TUTimestamp::testarCenarioValorInvalido(){
+    try{
+        timestamp->setValor(VALOR_INVALIDO);
+        estado = FALHA;
+    }
+    catch(invalid_argument &excecao){
+        if (timestamp->getValor() == VALOR_INVALIDO)
+            estado = FALHA;
+    }
+}
+
+int TUTimestamp::run(){
+    setUp();
+    testarCenarioValorValido();
+    testarCenarioValorInvalido();
+    tearDown();
+    return estado;
+}
+
 const string TUPessoa::EMAIL_VALIDO = "kaio@unb.br";
 const string TUPessoa::NOME_VALIDO = "Kaio Xavier";
 const string TUPessoa::SENHA_VALIDA = "abc12";
