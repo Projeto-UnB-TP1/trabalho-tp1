@@ -44,24 +44,23 @@ class Senha{
         /**
          * @brief Verifica se um texto é uma senha válida.
          * @param valor Texto a ser verificado.
-         * @return true se o texto respeitar todas as regras do domínio; false caso contrário.
+         * @throws invalid_argument se o texto não respeitar as regras do domínio.
          */
-        bool validar(string valor);
+        void validar(string valor);
 
     public:
         /**
          * @brief Atribui um valor à senha.
          * @param valor Texto com a nova senha.
-         * @return true se o valor foi atribuído com sucesso.
          * @throws invalid_argument se o valor não estiver no formato válido.
          *         Nesse caso, o valor anteriormente armazenado não é alterado.
          */
-        bool setValor(string valor);
+        void setValor(string valor);
 
         /**
          * @brief Obtém o valor armazenado.
          * @return Texto com a senha atual.
          */
-        string getValor();
+        string getValor() const;
 };
 #endif

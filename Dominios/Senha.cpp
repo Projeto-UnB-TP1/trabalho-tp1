@@ -1,40 +1,37 @@
 #include "Senha.hpp"
 #include <stdexcept>
-#include <cctype>
 
 using namespace std;
 
-string Senha::getValor(){
-    return valor;
-}
-
-bool Senha::validar(string valor){
-    if (valor.length() != TamanPermitido) {
-        return false;
+void Senha::validar(string valor){
+    if (valor.length() != TamanPermitido){
+        throw invalid_argument("Senha invalida: deve ter exatamente 5 caracteres.");
     }
+
     bool temLetra = false;
     bool temDigito = false;
 
-    for (char c : valor) {
-        if (isalpha(static_cast<unsigned char>(c))) {
+    for (unsigned int i = 0; i < valor.length(); i++){
+        char c = valor[i];
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')){
             temLetra = true;
-        } else if (isdigit(static_cast<unsigned char>(c))) {
+        } else if (c >= '0' && c <= '9'){
             temDigito = true;
-        }
-        else {
-            return false;
+        } else {
+            throw invalid_argument("Senha invalida: use apenas letras e digitos.");
         }
     }
-    if (temLetra && temDigito) {
-        return true;
-    } else {
-        return false;
+
+    if (!temLetra || !temDigito){
+        throw invalid_argument("Senha invalida: deve ter pelo menos uma letra e um digito.");
     }
 }
-bool Senha::setValor(string valor){
-    if (validar(valor)){
-        this->valor = valor;
-        return true;
-    }
-    throw invalid_argument("Senha invalida");
+
+void Senha::setValor(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+string Senha::getValor() const {
+    return valor;
 }

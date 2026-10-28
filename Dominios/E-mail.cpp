@@ -3,100 +3,68 @@
 
 using namespace std;
 
-static bool MinusculaDigito(char c){
-    for (char i = 'a'; i <= 'z'; i++){
-        if (c == i){
-            return true;
-        }
-    }
-    for (char i = '0'; i <= '9'; i++){
-        if (c == i){
-            return true;
-        }
-    }
-    return false;
+bool Email::minusculaOuDigito(char c) const {
+    return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
 }
 
-string Email::getValor(){
-    return valor;
-}
+void Email::validar(string valor){
+    unsigned int tamanho = valor.length();
+    unsigned int arroba = 0;
+    int quantidadeArrobas = 0;
 
-bool Email::validar(string valor){
-    
-    size_t arroba = valor.find('@');
-    size_t lastArroba = valor.rfind('@');
-    if (arroba == string::npos){
-        return false;
-    }
-    if (arroba != lastArroba){
-        return false;
-    }
-    string local = valor.substr(0, arroba);
-    string dominio = valor.substr(arroba + 1);
-
-    if (local.length() > LimiteLocal || dominio.length() > LimiteDominio){
-        return false;
-    }
-    if (local.empty() || dominio.empty()){
-        return false;
-    }
-
-    for (size_t i = 0; i < local.size(); i++){
-        char c = local[i];
-
-        if (MinusculaDigito(c)){
-            continue;
+    for (unsigned int i = 0; i < tamanho; i++){
+        if (valor[i] == '@'){
+            arroba = i;
+            quantidadeArrobas++;
         }
+    }
+    if (quantidadeArrobas != 1){
+        throw invalid_argument("E-mail invalido: deve conter exatamente um @.");
+    }
 
+    unsigned int tamanhoLocal = arroba;
+    unsigned int tamanhoDominio = tamanho - arroba - 1;
+    if (tamanhoLocal == 0 || tamanhoLocal > LimiteLocal){
+        throw invalid_argument("E-mail invalido: parte local deve ter de 1 a 64 caracteres.");
+    }
+    if (tamanhoDominio == 0 || tamanhoDominio > LimiteDominio){
+        throw invalid_argument("E-mail invalido: dominio deve ter de 1 a 255 caracteres.");
+    }
+
+    for (unsigned int i = 0; i < arroba; i++){
+        char c = valor[i];
         if (c == '.' || c == '-'){
-            if (i == 0 || i == local.size() - 1){
-                return false;
+            if (i == 0 || i == arroba - 1 || !minusculaOuDigito(valor[i + 1])){
+                throw invalid_argument("E-mail invalido: ponto ou hifen da parte local deve ficar entre letras ou digitos.");
             }
-            if (!MinusculaDigito(local[i + 1])){
-                return false;
-            }
-        }
-        else {
-            return false;
+        } else if (!minusculaOuDigito(c)){
+            throw invalid_argument("E-mail invalido: parte local aceita letras minusculas, digitos, ponto e hifen.");
         }
     }
 
-    size_t inicio = 0;
-    while (true){
-        size_t ponto = dominio.find('.', inicio);
-
-        string parte;
-        if (ponto == string::npos){
-            parte = dominio.substr(inicio);
-        } else {
-            parte = dominio.substr(inicio, ponto - inicio);
-        }
-
-        if (parte.empty()){
-            return false;
-        }
-        if (parte[0] == '-' || parte[parte.size() - 1] == '-'){
-            return false;
-        }
-        for (char c : parte){
-            if (!MinusculaDigito(c) && c != '-'){
-                return false;
+    for (unsigned int i = arroba + 1; i < tamanho; i++){
+        char c = valor[i];
+        bool inicioParte = (i == arroba + 1 || valor[i - 1] == '.');
+        bool fimParte = (i == tamanho - 1 || valor[i + 1] == '.');
+        if (c == '.'){
+            if (inicioParte || i == tamanho - 1){
+                throw invalid_argument("E-mail invalido: partes do dominio nao podem ser vazias.");
             }
+        } else if (c == '-'){
+            if (inicioParte || fimParte){
+                throw invalid_argument("E-mail invalido: parte do dominio nao pode iniciar ou terminar com hifen.");
+            }
+        } else if (!minusculaOuDigito(c)){
+            throw invalid_argument("E-mail invalido: dominio aceita letras minusculas, digitos, ponto e hifen.");
         }
-
-        if (ponto == string::npos){
-            break;
-        }
-        inicio = ponto + 1;
     }
-
-    return true;
 }
 
-bool Email::setValor(string valor){
-    if (validar(valor)){
-        this->valor = valor;
-        return true;
-    }
-    throw invalid_argument("E-mail invalido");
+void Email::setValor(string valor){
+    validar(valor);
+    this->valor = valor;
+}
+
+string Email::getValor() const {
+    return valor;
 }
