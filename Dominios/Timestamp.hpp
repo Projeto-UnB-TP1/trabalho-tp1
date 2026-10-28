@@ -17,7 +17,10 @@ class Timestamp{
   private:
   std::string valor;
   void validar(std::string valor);
-  bool bissexto(int ano);
+  bool bissexto(int ano) const;
+  int diasNoMes(int mes, int ano) const;
+  int numero(std::string texto, unsigned int inicio, unsigned int quantidade) const;
+  int indiceMes(std::string texto, unsigned int p) const;
 
   public:
 
@@ -33,6 +36,16 @@ class Timestamp{
    * @return std::string O timestamp atual, no formato DIA-MES-ANO-HORARIO.
    */
   std::string getValor() const;
+
+  /**
+   * @brief Converte o timestamp em minutos contados a partir de 1-JAN-2000-00:00.
+   *
+   * A diferença entre os valores convertidos de dois timestamps é a duração, em minutos,
+   * entre eles. Usado no cálculo de tempo de ciclo e lead time.
+   * @return int Quantidade de minutos desde 1-JAN-2000-00:00.
+   * @throw std::invalid_argument Se o timestamp ainda não tiver valor.
+   */
+  int converterParaMinutos() const;
 };
 
 #endif
