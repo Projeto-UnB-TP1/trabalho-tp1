@@ -20,7 +20,7 @@ class CartaoDeAtividade{
   Timestamp entrada;
   Timestamp inicio;
   Timestamp termino;
-  Identificador identificadorQuadro;   // identificador do quadro ao qual o cartão pertence
+  Identificador identificadorQuadro;
 
   public:
 

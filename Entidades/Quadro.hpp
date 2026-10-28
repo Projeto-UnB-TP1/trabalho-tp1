@@ -10,7 +10,7 @@ class Quadro{
   Identificador identificador;
   Nome nome;
   Limite limite;
-  Identificador identificadorProjeto;   // identificador do projeto ao qual o quadro pertence
+  Identificador identificadorProjeto;
 
   public:
 

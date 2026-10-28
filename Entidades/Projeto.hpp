@@ -14,7 +14,7 @@ class Projeto{
   Texto descricao;
   Timestamp inicio;
   Timestamp termino;
-  Email emailGestor;   // e-mail da pessoa que criou o projeto
+  Email emailGestor;
 
   public:
 

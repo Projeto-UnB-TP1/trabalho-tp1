@@ -1,7 +1,5 @@
 #include "testes.hpp"
 
-// ---------------- TUPessoa ----------------
-
 const string TUPessoa::EMAIL_VALIDO = "kaio@unb.br";
 const string TUPessoa::NOME_VALIDO = "Kaio Xavier";
 const string TUPessoa::SENHA_VALIDA = "abc12";
@@ -48,8 +46,6 @@ int TUPessoa::run(){
     tearDown();
     return estado;
 }
-
-// ---------------- TUProjeto ----------------
 
 const string TUProjeto::IDENTIFICADOR_VALIDO = "PRJ001";
 const string TUProjeto::NOME_VALIDO = "Projeto Kanban";
@@ -112,8 +108,6 @@ int TUProjeto::run(){
     return estado;
 }
 
-// ---------------- TUQuadro ----------------
-
 const string TUQuadro::IDENTIFICADOR_VALIDO = "QDR001";
 const string TUQuadro::NOME_VALIDO = "Quadro Geral";
 const string TUQuadro::IDENTIFICADOR_PROJETO_VALIDO = "PRJ001";
@@ -159,8 +153,6 @@ int TUQuadro::run(){
     tearDown();
     return estado;
 }
-
-// ---------------- TUCartaoDeAtividade ----------------
 
 const string TUCartaoDeAtividade::IDENTIFICADOR_VALIDO = "CRT001";
 const string TUCartaoDeAtividade::NOME_VALIDO = "Tela de login";
