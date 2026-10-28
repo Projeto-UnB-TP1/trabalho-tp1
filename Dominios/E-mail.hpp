@@ -38,9 +38,9 @@ using namespace std;
  * Email email;
  * try {
  *     email.setValor("joao.silva@unb.br");
- *     string atual = email.getValor();   // "joao.silva@unb.br"
+ *     string atual = email.getValor();
  * } catch (const invalid_argument& e) {
- *     // e-mail fora do formato permitido
+ *
  * }
  * @endcode
  */

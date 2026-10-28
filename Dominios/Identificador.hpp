@@ -33,4 +33,4 @@ inline std::string Identificador::getValor() const {
     return valor;
 }
 
-#endif // IDENTIFICADOR_HPP
+#endif

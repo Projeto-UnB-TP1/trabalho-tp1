@@ -23,7 +23,6 @@ string Email::getValor(){
 
 bool Email::validar(string valor){
     
-    // Etapa 1: dividir em parte local e domínio
     size_t arroba = valor.find('@');
     size_t lastArroba = valor.rfind('@');
     if (arroba == string::npos){
@@ -35,7 +34,6 @@ bool Email::validar(string valor){
     string local = valor.substr(0, arroba);
     string dominio = valor.substr(arroba + 1);
 
-    // Tamanhos e vazios
     if (local.length() > LimiteLocal || dominio.length() > LimiteDominio){
         return false;
     }
@@ -43,7 +41,6 @@ bool Email::validar(string valor){
         return false;
     }
 
-    // Etapa 2: parte local
     for (size_t i = 0; i < local.size(); i++){
         char c = local[i];
 
@@ -64,7 +61,6 @@ bool Email::validar(string valor){
         }
     }
 
-    // Etapa 3: domínio
     size_t inicio = 0;
     while (true){
         size_t ponto = dominio.find('.', inicio);

@@ -10,25 +10,23 @@ void CntrApresentacaoPessoa::executar() {
 
     std::cout << "--- MENU DE AUTENTICACAO ---" << std::endl;
 
-    // Validação inicial de dados de entrada na apresentação
     while (!dadosValidos) {
         try {
             std::cout << "Digite o seu E-mail: ";
             std::cin >> inputEmail;
-            email.setValor(inputEmail); // Lança exceção se for inválido
+            email.setValor(inputEmail);
 
             std::cout << "Digite a sua Senha: ";
             std::cin >> inputSenha;
-            senha.setValor(inputSenha); // Lança exceção se for inválida
+            senha.setValor(inputSenha);
 
-            dadosValidos = true; // Se não lançou exceção, os dados estão no formato correto
+            dadosValidos = true;
         } catch (std::invalid_argument &exp) {
             std::cout << "Erro de formatacao: " << exp.what() << std::endl;
             std::cout << "Por favor, tente novamente.\n" << std::endl;
         }
     }
 
-    // Comunica com a camada de serviço através da interface abstrata
     if (servico->autenticar(email, senha)) {
         std::cout << "Autenticacao realizada com sucesso!" << std::endl;
     } else {

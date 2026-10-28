@@ -34,4 +34,4 @@ inline std::string Nome::getValor() const {
     return valor;
 }
 
-#endif // NOME_HPP
+#endif

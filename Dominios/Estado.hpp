@@ -25,9 +25,9 @@ using namespace std;
  * Estado estado;
  * try {
  *     estado.setValor("FAZENDO");
- *     string atual = estado.getValor();   // "FAZENDO"
+ *     string atual = estado.getValor();
  * } catch (const invalid_argument& e) {
- *     // valor fora do formato permitido
+ *
  * }
  * @endcode
  */

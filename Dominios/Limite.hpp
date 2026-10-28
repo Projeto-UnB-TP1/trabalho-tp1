@@ -27,4 +27,4 @@ public:
     int getValor() const;
 };
 
-#endif // LIMITE_HPP
+#endif

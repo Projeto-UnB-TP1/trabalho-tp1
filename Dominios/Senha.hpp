@@ -27,9 +27,9 @@ using namespace std;
  * Senha senha;
  * try {
  *     senha.setValor("abc12");
- *     string atual = senha.getValor();   // "abc12"
+ *     string atual = senha.getValor();
  * } catch (const invalid_argument& e) {
- *     // senha fora do formato permitido
+ *
  * }
  * @endcode
  */
