@@ -1,5 +1,4 @@
 #include "Timestamp.hpp"
-#include <cctype>
 
 using namespace std;
 
@@ -34,11 +33,12 @@ void Timestamp::validar(string valor){
         throw invalid_argument("Timestamp invalido: formato deve ser DIA-MES-ANO-HORARIO.");
     }
 
-    // Fora os separadores e a sigla do mês, todo caractere deve ser dígito.
+    // Fora os separadores e a sigla do mês, todo caractere deve ser dígito ('0' a '9').
     for (unsigned int i = 0; i < tamanho; i++){
         bool separador = (i == p || i == p + 4 || i == p + 9 || i == p + 12);
         bool siglaMes = (i > p && i < p + 4);
-        if (!separador && !siglaMes && !isdigit(valor[i])){
+        bool digito = (valor[i] >= '0' && valor[i] <= '9');
+        if (!separador && !siglaMes && !digito){
             throw invalid_argument("Timestamp invalido: dia, ano e horario devem ser numeros.");
         }
     }
