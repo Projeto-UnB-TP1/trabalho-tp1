@@ -4,30 +4,42 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @class Nome
- * @brief Domínio que representa o nome.
- * 
- * Regras: Até 15 caracteres. Letras ou espaço. Espaço seguido de letra. 
- * Não inicia nem termina com espaço.
- */
+///
+/// Padrão para representação de nome.
+///
+/// Regras de formato:
+///
+/// - Até 15 caracteres.
+/// - Cada caractere é letra ou espaço em branco.
+/// - Espaço em branco seguido por letra.
+/// - Não inicia nem termina com espaço em branco.
+///
+
 class Nome {
 private:
     std::string valor;
     void validar(std::string valor);
     bool ehLetra(char c) const;
 public:
-    /**
-     * @brief Define o nome.
-     * @param valor String representando o nome.
-     * @throw std::invalid_argument em caso de formato inválido.
-     */
+
+///
+/// Armazena nome caso o mesmo seja válido.
+///
+/// Lança exceção caso o nome seja inválido.
+///
+/// @param valor Nome.
+///
+/// @throw invalid_argument
+///
+
     void setValor(std::string valor);
 
-    /**
-     * @brief Retorna o nome.
-     * @return std::string O nome atual.
-     */
+///
+/// Retorna nome.
+///
+/// @return Nome.
+///
+
     std::string getValor() const;
 };
 

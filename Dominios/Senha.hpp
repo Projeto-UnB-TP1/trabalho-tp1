@@ -4,63 +4,42 @@
 
 using namespace std;
 
-/**
- * @file Senha.hpp
- * @brief Declaração da classe de domínio Senha.
- */
+///
+/// Padrão para representação de senha.
+///
+/// Regras de formato:
+///
+/// - 5 caracteres.
+/// - Cada caractere é letra ou dígito.
+/// - Pelo menos uma letra e pelo menos um dígito.
+///
 
-/**
- * @brief Domínio que representa a senha de um usuário.
- *
- * @details Uma senha é válida quando satisfaz todas as regras abaixo:
- * - possui exatamente 5 caracteres;
- * - cada caractere é uma letra (a-z ou A-Z) ou um dígito (0-9);
- * - existe pelo menos uma letra;
- * - existe pelo menos um dígito.
- *
- * Exemplos válidos: "abc12", "A1b2C", "12ab3".
- * Exemplos inválidos: "abcde" (sem dígito), "12345" (sem letra),
- * "ab12" (tamanho incorreto), "ab-12" (caractere não permitido).
- *
- * Exemplo de uso:
- * @code
- * Senha senha;
- * try {
- *     senha.setValor("abc12");
- *     string atual = senha.getValor();
- * } catch (const invalid_argument& e) {
- *
- * }
- * @endcode
- */
 class Senha{
     private:
-        /** @brief Quantidade exata de caracteres de uma senha. */
         static const int TamanPermitido = 5;
-
-        /** @brief Valor armazenado da senha. */
         string valor;
-
-        /**
-         * @brief Verifica se um texto é uma senha válida.
-         * @param valor Texto a ser verificado.
-         * @throws invalid_argument se o texto não respeitar as regras do domínio.
-         */
         void validar(string valor);
 
     public:
-        /**
-         * @brief Atribui um valor à senha.
-         * @param valor Texto com a nova senha.
-         * @throws invalid_argument se o valor não estiver no formato válido.
-         *         Nesse caso, o valor anteriormente armazenado não é alterado.
-         */
+
+///
+/// Armazena senha caso a mesma seja válida.
+///
+/// Lança exceção caso a senha seja inválida.
+///
+/// @param valor Senha.
+///
+/// @throw invalid_argument
+///
+
         void setValor(string valor);
 
-        /**
-         * @brief Obtém o valor armazenado.
-         * @return Texto com a senha atual.
-         */
+///
+/// Retorna senha.
+///
+/// @return Senha.
+///
+
         string getValor() const;
 };
 #endif

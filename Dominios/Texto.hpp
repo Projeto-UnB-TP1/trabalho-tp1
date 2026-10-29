@@ -4,12 +4,17 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @brief Classe de domínio que representa um Texto.
- * Regra de formato: Ate 30 caracteres. Pode conter letras, digitos, espacos em branco ou
- * sinais de pontuacao (, ; . : ? !). Nao pode haver dois sinais de pontuacao seguidos.
- * O primeiro caractere deve ser letra maiuscula e o ultimo deve ser ponto.
- */
+///
+/// Padrão para representação de texto.
+///
+/// Regras de formato:
+///
+/// - Até 30 caracteres.
+/// - Cada caractere é letra, dígito, espaço em branco ou sinal de pontuação (, ; . : ? !).
+/// - Não há dois sinais de pontuação seguidos.
+/// - Primeiro caractere é letra maiúscula e último caractere é ponto.
+///
+
 class Texto {
 private:
     std::string valor;
@@ -18,17 +23,25 @@ private:
     bool isLetraOuDigito(char c) const;
 
 public:
-    /**
-     * @brief Define o valor do texto.
-     * @param valor String com o texto.
-     * @throw std::invalid_argument Se o texto nao seguir as regras de formatacao.
-     */
+
+///
+/// Armazena texto caso o mesmo seja válido.
+///
+/// Lança exceção caso o texto seja inválido.
+///
+/// @param valor Texto.
+///
+/// @throw invalid_argument
+///
+
     void setValor(std::string valor);
 
-    /**
-     * @brief Retorna o valor do texto.
-     * @return std::string O texto atual.
-     */
+///
+/// Retorna texto.
+///
+/// @return Texto.
+///
+
     std::string getValor() const;
 };
 

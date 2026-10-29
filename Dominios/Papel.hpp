@@ -4,43 +4,38 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @file Papel.hpp
- * @brief Declaração da classe de domínio Papel.
- */
+///
+/// Padrão para representação de papel de pessoa.
+///
+/// Regras de formato:
+///
+/// - Papel é válido caso seja GESTOR ou DESENVOLVEDOR.
+///
 
-/**
- * @brief Domínio que representa o papel de uma pessoa no sistema.
- *
- * @details Os valores válidos são exatamente "GESTOR" e "DESENVOLVEDOR", em maiúsculas.
- * O papel define quais serviços a pessoa pode usar: somente GESTOR cria, atualiza e
- * exclui projetos, quadros e cartões de atividade.
- *
- * Exemplo de uso:
- * @code
- * Papel papel;
- * papel.setValor("GESTOR");
- * string atual = papel.getValor();   // "GESTOR"
- * @endcode
- */
 class Papel{
   private:
   std::string valor;
 
   public:
 
-  /**
-   * @brief Define o valor do papel.
-   * @param valor Texto com o papel: "GESTOR" ou "DESENVOLVEDOR".
-   * @throw std::invalid_argument Se o valor for diferente de "GESTOR" e "DESENVOLVEDOR".
-   *        Nesse caso, o valor armazenado anteriormente não é alterado.
-   */
+///
+/// Armazena papel caso o mesmo seja válido.
+///
+/// Lança exceção caso o papel seja inválido.
+///
+/// @param valor Papel.
+///
+/// @throw invalid_argument
+///
+
   void setValor(std::string valor);
 
-  /**
-   * @brief Retorna o valor do papel.
-   * @return std::string O papel atual: "GESTOR" ou "DESENVOLVEDOR".
-   */
+///
+/// Retorna papel.
+///
+/// @return Papel.
+///
+
   std::string getValor() const;
 };
 

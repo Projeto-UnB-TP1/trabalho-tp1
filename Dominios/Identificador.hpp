@@ -4,28 +4,40 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @class Identificador
- * @brief Domínio que representa o código de identificação.
- * 
- * Regra de formato: 6 caracteres, sendo os três primeiros letras e os três últimos dígitos.
- */
+///
+/// Padrão para representação de identificador.
+///
+/// Regras de formato:
+///
+/// - 6 caracteres.
+/// - Os três primeiros caracteres são letras.
+/// - Os três últimos caracteres são dígitos.
+///
+
 class Identificador {
 private:
     std::string valor;
     void validar(std::string valor);
 public:
-    /**
-     * @brief Define o identificador.
-     * @param valor String a ser armazenada.
-     * @throw std::invalid_argument se não respeitar o padrão LLLDDD.
-     */
+
+///
+/// Armazena identificador caso o mesmo seja válido.
+///
+/// Lança exceção caso o identificador seja inválido.
+///
+/// @param valor Identificador.
+///
+/// @throw invalid_argument
+///
+
     void setValor(std::string valor);
 
-    /**
-     * @brief Retorna o identificador.
-     * @return std::string O identificador atual, no formato LLLDDD.
-     */
+///
+/// Retorna identificador.
+///
+/// @return Identificador.
+///
+
     std::string getValor() const;
 };
 
