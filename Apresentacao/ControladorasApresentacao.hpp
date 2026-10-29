@@ -8,6 +8,21 @@
 
 using namespace std;
 
+class Tela{
+    public:
+        static string lerCampo(string);
+        static int lerOpcao();
+        static int converterNumero(string);
+        static bool lerIdentificador(string, Identificador*);
+        static bool ehGestor(IServicoPessoas*, Email);
+        static string valorOuTraco(string);
+        static void mostrarTempo(string, int);
+        static void mostrarProjeto(Projeto);
+        static void mostrarQuadro(Quadro);
+        static void mostrarCartao(CartaoDeAtividade);
+        static void listarIdentificadores(list<Identificador>, string);
+};
+
 class CntrApresentacaoControle{
     private:
         Email email;
@@ -26,26 +41,6 @@ class CntrApresentacaoControle{
         void setCntrServicoPessoas(IServicoPessoas*);
 };
 
-inline void CntrApresentacaoControle::setCntrApresentacaoPessoas(IApresentacaoPessoas *cntr){
-    cntrApresentacaoPessoas = cntr;
-}
-
-inline void CntrApresentacaoControle::setCntrApresentacaoProjetos(IApresentacaoProjetos *cntr){
-    cntrApresentacaoProjetos = cntr;
-}
-
-inline void CntrApresentacaoControle::setCntrApresentacaoQuadros(IApresentacaoQuadros *cntr){
-    cntrApresentacaoQuadros = cntr;
-}
-
-inline void CntrApresentacaoControle::setCntrApresentacaoCartoes(IApresentacaoCartoes *cntr){
-    cntrApresentacaoCartoes = cntr;
-}
-
-inline void CntrApresentacaoControle::setCntrServicoPessoas(IServicoPessoas *cntr){
-    cntrServicoPessoas = cntr;
-}
-
 class CntrApresentacaoPessoas:public IApresentacaoPessoas{
     private:
         IServicoPessoas *cntr;
@@ -59,10 +54,6 @@ class CntrApresentacaoPessoas:public IApresentacaoPessoas{
         void executar(Email);
         void setCntrServicoPessoas(IServicoPessoas*);
 };
-
-inline void CntrApresentacaoPessoas::setCntrServicoPessoas(IServicoPessoas *cntr){
-    this->cntr = cntr;
-}
 
 class CntrApresentacaoProjetos:public IApresentacaoProjetos{
     private:
@@ -79,14 +70,6 @@ class CntrApresentacaoProjetos:public IApresentacaoProjetos{
         void setCntrServicoPessoas(IServicoPessoas*);
 };
 
-inline void CntrApresentacaoProjetos::setCntrServicoProjetos(IServicoProjetos *cntr){
-    this->cntr = cntr;
-}
-
-inline void CntrApresentacaoProjetos::setCntrServicoPessoas(IServicoPessoas *cntr){
-    cntrServicoPessoas = cntr;
-}
-
 class CntrApresentacaoQuadros:public IApresentacaoQuadros{
     private:
         IServicoQuadros *cntr;
@@ -101,14 +84,6 @@ class CntrApresentacaoQuadros:public IApresentacaoQuadros{
         void setCntrServicoQuadros(IServicoQuadros*);
         void setCntrServicoPessoas(IServicoPessoas*);
 };
-
-inline void CntrApresentacaoQuadros::setCntrServicoQuadros(IServicoQuadros *cntr){
-    this->cntr = cntr;
-}
-
-inline void CntrApresentacaoQuadros::setCntrServicoPessoas(IServicoPessoas *cntr){
-    cntrServicoPessoas = cntr;
-}
 
 class CntrApresentacaoCartoes:public IApresentacaoCartoes{
     private:
@@ -131,13 +106,5 @@ class CntrApresentacaoCartoes:public IApresentacaoCartoes{
         void setCntrServicoCartoes(IServicoCartoes*);
         void setCntrServicoPessoas(IServicoPessoas*);
 };
-
-inline void CntrApresentacaoCartoes::setCntrServicoCartoes(IServicoCartoes *cntr){
-    this->cntr = cntr;
-}
-
-inline void CntrApresentacaoCartoes::setCntrServicoPessoas(IServicoPessoas *cntr){
-    cntrServicoPessoas = cntr;
-}
 
 #endif

@@ -1,7 +1,6 @@
-#include <cctype>
 #include "ControladorasApresentacao.hpp"
 
-string lerCampo(string rotulo){
+string Tela::lerCampo(string rotulo){
     char campo[400];
     campo[0] = '\0';
     cout << rotulo;
@@ -9,24 +8,24 @@ string lerCampo(string rotulo){
     return string(campo);
 }
 
-int lerOpcao(){
-    string campo = lerCampo("Opcao: ");
+int Tela::lerOpcao(){
+    string campo = Tela::lerCampo("Opcao: ");
     if (!cin){
         return 0;
     }
-    if (campo.length() != 1 || !isdigit(campo[0])){
+    if (campo.length() != 1 || !(campo[0] >= '0' && campo[0] <= '9')){
         return -1;
     }
     return campo[0] - 48;
 }
 
-int converterNumero(string texto){
+int Tela::converterNumero(string texto){
     if (texto.length() == 0 || texto.length() > 3){
         return 0;
     }
     int resultado = 0;
     for (unsigned int i = 0; i < texto.length(); i++){
-        if (!isdigit(texto[i])){
+        if (!(texto[i] >= '0' && texto[i] <= '9')){
             return 0;
         }
         resultado = resultado * 10 + (texto[i] - '0');
@@ -34,9 +33,9 @@ int converterNumero(string texto){
     return resultado;
 }
 
-bool lerIdentificador(string rotulo, Identificador *identificador){
+bool Tela::lerIdentificador(string rotulo, Identificador *identificador){
     try{
-        identificador->setValor(lerCampo(rotulo));
+        identificador->setValor(Tela::lerCampo(rotulo));
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
@@ -45,7 +44,7 @@ bool lerIdentificador(string rotulo, Identificador *identificador){
     return true;
 }
 
-bool ehGestor(IServicoPessoas *cntr, Email email){
+bool Tela::ehGestor(IServicoPessoas *cntr, Email email){
     Pessoa pessoa;
     pessoa.setEmail(email);
     if (!cntr->ler(&pessoa)){
@@ -54,19 +53,19 @@ bool ehGestor(IServicoPessoas *cntr, Email email){
     return pessoa.getPapel().getValor() == "GESTOR";
 }
 
-string valorOuTraco(string valor){
+string Tela::valorOuTraco(string valor){
     if (valor.length() == 0){
         return "-";
     }
     return valor;
 }
 
-void mostrarTempo(string rotulo, int minutos){
+void Tela::mostrarTempo(string rotulo, int minutos){
     cout << rotulo << minutos / 1440 << " dia(s), " << (minutos % 1440) / 60 << " hora(s) e "
          << minutos % 60 << " minuto(s)." << endl;
 }
 
-void mostrarProjeto(Projeto projeto){
+void Tela::mostrarProjeto(Projeto projeto){
     cout << "Identificador: " << projeto.getIdentificador().getValor() << endl;
     cout << "Nome         : " << projeto.getNome().getValor() << endl;
     cout << "Descricao    : " << projeto.getDescricao().getValor() << endl;
@@ -75,27 +74,27 @@ void mostrarProjeto(Projeto projeto){
     cout << "Gestor       : " << projeto.getEmailGestor().getValor() << endl;
 }
 
-void mostrarQuadro(Quadro quadro){
+void Tela::mostrarQuadro(Quadro quadro){
     cout << "Identificador: " << quadro.getIdentificador().getValor() << endl;
     cout << "Nome         : " << quadro.getNome().getValor() << endl;
     cout << "Limite WIP   : " << quadro.getLimite().getValor() << endl;
     cout << "Projeto      : " << quadro.getIdentificadorProjeto().getValor() << endl;
 }
 
-void mostrarCartao(CartaoDeAtividade cartao){
+void Tela::mostrarCartao(CartaoDeAtividade cartao){
     cout << "Identificador: " << cartao.getIdentificador().getValor() << endl;
     cout << "Nome         : " << cartao.getNome().getValor() << endl;
     cout << "Descricao    : " << cartao.getDescricao().getValor() << endl;
     cout << "Prioridade   : " << cartao.getPrioridade().getValor() << endl;
     cout << "Tamanho      : " << cartao.getTamanho().getValor() << endl;
     cout << "Estado       : " << cartao.getEstado().getValor() << endl;
-    cout << "Entrada      : " << valorOuTraco(cartao.getEntrada().getValor()) << endl;
-    cout << "Inicio       : " << valorOuTraco(cartao.getInicio().getValor()) << endl;
-    cout << "Termino      : " << valorOuTraco(cartao.getTermino().getValor()) << endl;
+    cout << "Entrada      : " << Tela::valorOuTraco(cartao.getEntrada().getValor()) << endl;
+    cout << "Inicio       : " << Tela::valorOuTraco(cartao.getInicio().getValor()) << endl;
+    cout << "Termino      : " << Tela::valorOuTraco(cartao.getTermino().getValor()) << endl;
     cout << "Quadro       : " << cartao.getIdentificadorQuadro().getValor() << endl;
 }
 
-void listarIdentificadores(list<Identificador> identificadores, string vazio){
+void Tela::listarIdentificadores(list<Identificador> identificadores, string vazio){
     if (identificadores.begin() == identificadores.end()){
         cout << vazio << endl;
         return;
@@ -105,6 +104,26 @@ void listarIdentificadores(list<Identificador> identificadores, string vazio){
     }
 }
 
+void CntrApresentacaoControle::setCntrApresentacaoPessoas(IApresentacaoPessoas *cntr){
+    cntrApresentacaoPessoas = cntr;
+}
+
+void CntrApresentacaoControle::setCntrApresentacaoProjetos(IApresentacaoProjetos *cntr){
+    cntrApresentacaoProjetos = cntr;
+}
+
+void CntrApresentacaoControle::setCntrApresentacaoQuadros(IApresentacaoQuadros *cntr){
+    cntrApresentacaoQuadros = cntr;
+}
+
+void CntrApresentacaoControle::setCntrApresentacaoCartoes(IApresentacaoCartoes *cntr){
+    cntrApresentacaoCartoes = cntr;
+}
+
+void CntrApresentacaoControle::setCntrServicoPessoas(IServicoPessoas *cntr){
+    cntrServicoPessoas = cntr;
+}
+
 void CntrApresentacaoControle::executar(){
     bool apresentar = true;
     while (apresentar){
@@ -112,7 +131,7 @@ void CntrApresentacaoControle::executar(){
         cout << "1 - Entrar." << endl;
         cout << "2 - Cadastrar pessoa." << endl;
         cout << "0 - Encerrar." << endl;
-        switch (lerOpcao()){
+        switch (Tela::lerOpcao()){
             case 1: if (cntrApresentacaoPessoas->autenticar(&email)){
                         executarSessao();
                     } else {
@@ -138,7 +157,7 @@ void CntrApresentacaoControle::executarSessao(){
         cout << "3 - Quadros." << endl;
         cout << "4 - Cartoes de atividade." << endl;
         cout << "0 - Sair." << endl;
-        switch (lerOpcao()){
+        switch (Tela::lerOpcao()){
             case 1: cntrApresentacaoPessoas->executar(email);
                     break;
             case 2: cntrApresentacaoProjetos->executar(email);
@@ -153,11 +172,15 @@ void CntrApresentacaoControle::executarSessao(){
     }
 }
 
+void CntrApresentacaoPessoas::setCntrServicoPessoas(IServicoPessoas *cntr){
+    this->cntr = cntr;
+}
+
 bool CntrApresentacaoPessoas::autenticar(Email *email){
     Senha senha;
     cout << endl << "AUTENTICACAO" << endl;
-    string campoEmail = lerCampo("E-mail: ");
-    string campoSenha = lerCampo("Senha : ");
+    string campoEmail = Tela::lerCampo("E-mail: ");
+    string campoSenha = Tela::lerCampo("Senha : ");
     try{
         email->setValor(campoEmail);
         senha.setValor(campoSenha);
@@ -175,10 +198,10 @@ void CntrApresentacaoPessoas::cadastrar(){
     Senha senha;
     Papel papel;
     cout << endl << "CADASTRAR PESSOA" << endl;
-    string campoEmail = lerCampo("E-mail                       : ");
-    string campoNome = lerCampo("Nome                         : ");
-    string campoSenha = lerCampo("Senha                        : ");
-    string campoPapel = lerCampo("Papel (GESTOR/DESENVOLVEDOR) : ");
+    string campoEmail = Tela::lerCampo("E-mail                       : ");
+    string campoNome = Tela::lerCampo("Nome                         : ");
+    string campoSenha = Tela::lerCampo("Senha                        : ");
+    string campoPapel = Tela::lerCampo("Papel (GESTOR/DESENVOLVEDOR) : ");
     try{
         email.setValor(campoEmail);
         nome.setValor(campoNome);
@@ -210,7 +233,7 @@ void CntrApresentacaoPessoas::executar(Email email){
         cout << "3 - Excluir minha conta." << endl;
         cout << "4 - Listar pessoas." << endl;
         cout << "0 - Voltar." << endl;
-        switch (lerOpcao()){
+        switch (Tela::lerOpcao()){
             case 1: ler();
                     break;
             case 2: atualizar(email);
@@ -231,7 +254,7 @@ void CntrApresentacaoPessoas::executar(Email email){
 void CntrApresentacaoPessoas::ler(){
     Email email;
     try{
-        email.setValor(lerCampo("E-mail da pessoa: "));
+        email.setValor(Tela::lerCampo("E-mail da pessoa: "));
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
@@ -257,8 +280,8 @@ void CntrApresentacaoPessoas::atualizar(Email email){
     }
     cout << "Nome atual: " << pessoa.getNome().getValor() << endl;
     cout << "Digite os novos valores (Enter mantem o atual)." << endl;
-    string campoNome = lerCampo("Nome : ");
-    string campoSenha = lerCampo("Senha: ");
+    string campoNome = Tela::lerCampo("Nome : ");
+    string campoSenha = Tela::lerCampo("Senha: ");
     Nome nome;
     Senha senha;
     try{
@@ -283,7 +306,7 @@ void CntrApresentacaoPessoas::atualizar(Email email){
 }
 
 bool CntrApresentacaoPessoas::excluir(Email email){
-    string confirmacao = lerCampo("Confirma a exclusao da sua conta? (S/N): ");
+    string confirmacao = Tela::lerCampo("Confirma a exclusao da sua conta? (S/N): ");
     if (confirmacao != "S" && confirmacao != "s"){
         cout << "Exclusao cancelada." << endl;
         return false;
@@ -307,10 +330,18 @@ void CntrApresentacaoPessoas::listar(){
     }
 }
 
+void CntrApresentacaoProjetos::setCntrServicoProjetos(IServicoProjetos *cntr){
+    this->cntr = cntr;
+}
+
+void CntrApresentacaoProjetos::setCntrServicoPessoas(IServicoPessoas *cntr){
+    cntrServicoPessoas = cntr;
+}
+
 void CntrApresentacaoProjetos::executar(Email email){
     bool apresentar = true;
     while (apresentar){
-        bool gestor = ehGestor(cntrServicoPessoas, email);
+        bool gestor = Tela::ehGestor(cntrServicoPessoas, email);
         cout << endl << "PROJETOS" << endl;
         if (gestor){
             cout << "1 - Criar projeto." << endl;
@@ -322,7 +353,7 @@ void CntrApresentacaoProjetos::executar(Email email){
         }
         cout << "5 - Listar projetos." << endl;
         cout << "0 - Voltar." << endl;
-        int opcao = lerOpcao();
+        int opcao = Tela::lerOpcao();
         if (!gestor && (opcao == 1 || opcao == 3 || opcao == 4)){
             opcao = -1;
         }
@@ -351,11 +382,11 @@ void CntrApresentacaoProjetos::criar(Email email){
     Timestamp inicio;
     Timestamp termino;
     cout << endl << "CRIAR PROJETO" << endl;
-    string campoIdentificador = lerCampo("Identificador (ex.: PRJ001)        : ");
-    string campoNome = lerCampo("Nome                               : ");
-    string campoDescricao = lerCampo("Descricao                          : ");
-    string campoInicio = lerCampo("Inicio (ex.: 01-JAN-2026-08:00)    : ");
-    string campoTermino = lerCampo("Termino (ex.: 30-JUN-2026-18:00)   : ");
+    string campoIdentificador = Tela::lerCampo("Identificador (ex.: PRJ001)        : ");
+    string campoNome = Tela::lerCampo("Nome                               : ");
+    string campoDescricao = Tela::lerCampo("Descricao                          : ");
+    string campoInicio = Tela::lerCampo("Inicio (ex.: 01-JAN-2026-08:00)    : ");
+    string campoTermino = Tela::lerCampo("Termino (ex.: 30-JUN-2026-18:00)   : ");
     try{
         identificador.setValor(campoIdentificador);
         nome.setValor(campoNome);
@@ -383,7 +414,7 @@ void CntrApresentacaoProjetos::criar(Email email){
 
 void CntrApresentacaoProjetos::ler(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do projeto: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do projeto: ", &identificador)){
         return;
     }
     Projeto projeto;
@@ -392,12 +423,12 @@ void CntrApresentacaoProjetos::ler(){
         cout << "Falha: projeto nao encontrado." << endl;
         return;
     }
-    mostrarProjeto(projeto);
+    Tela::mostrarProjeto(projeto);
 }
 
 void CntrApresentacaoProjetos::atualizar(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do projeto: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do projeto: ", &identificador)){
         return;
     }
     Projeto projeto;
@@ -406,12 +437,12 @@ void CntrApresentacaoProjetos::atualizar(){
         cout << "Falha: projeto nao encontrado." << endl;
         return;
     }
-    mostrarProjeto(projeto);
+    Tela::mostrarProjeto(projeto);
     cout << "Digite os novos valores (Enter mantem o atual)." << endl;
-    string campoNome = lerCampo("Nome     : ");
-    string campoDescricao = lerCampo("Descricao: ");
-    string campoInicio = lerCampo("Inicio   : ");
-    string campoTermino = lerCampo("Termino  : ");
+    string campoNome = Tela::lerCampo("Nome     : ");
+    string campoDescricao = Tela::lerCampo("Descricao: ");
+    string campoInicio = Tela::lerCampo("Inicio   : ");
+    string campoTermino = Tela::lerCampo("Termino  : ");
     Nome nome;
     Texto descricao;
     Timestamp inicio;
@@ -447,7 +478,7 @@ void CntrApresentacaoProjetos::atualizar(){
 
 void CntrApresentacaoProjetos::excluir(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do projeto: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do projeto: ", &identificador)){
         return;
     }
     if (cntr->excluir(identificador)){
@@ -458,13 +489,21 @@ void CntrApresentacaoProjetos::excluir(){
 }
 
 void CntrApresentacaoProjetos::listar(){
-    listarIdentificadores(cntr->listar(), "Nenhum projeto cadastrado.");
+    Tela::listarIdentificadores(cntr->listar(), "Nenhum projeto cadastrado.");
+}
+
+void CntrApresentacaoQuadros::setCntrServicoQuadros(IServicoQuadros *cntr){
+    this->cntr = cntr;
+}
+
+void CntrApresentacaoQuadros::setCntrServicoPessoas(IServicoPessoas *cntr){
+    cntrServicoPessoas = cntr;
 }
 
 void CntrApresentacaoQuadros::executar(Email email){
     bool apresentar = true;
     while (apresentar){
-        bool gestor = ehGestor(cntrServicoPessoas, email);
+        bool gestor = Tela::ehGestor(cntrServicoPessoas, email);
         cout << endl << "QUADROS" << endl;
         if (gestor){
             cout << "1 - Criar quadro." << endl;
@@ -476,7 +515,7 @@ void CntrApresentacaoQuadros::executar(Email email){
         }
         cout << "5 - Listar quadros de um projeto." << endl;
         cout << "0 - Voltar." << endl;
-        int opcao = lerOpcao();
+        int opcao = Tela::lerOpcao();
         if (!gestor && (opcao == 1 || opcao == 3 || opcao == 4)){
             opcao = -1;
         }
@@ -504,15 +543,15 @@ void CntrApresentacaoQuadros::criar(){
     Nome nome;
     Limite limite;
     cout << endl << "CRIAR QUADRO" << endl;
-    string campoProjeto = lerCampo("Identificador do projeto        : ");
-    string campoIdentificador = lerCampo("Identificador do quadro         : ");
-    string campoNome = lerCampo("Nome                            : ");
-    string campoLimite = lerCampo("Limite WIP (1 a 25)             : ");
+    string campoProjeto = Tela::lerCampo("Identificador do projeto        : ");
+    string campoIdentificador = Tela::lerCampo("Identificador do quadro         : ");
+    string campoNome = Tela::lerCampo("Nome                            : ");
+    string campoLimite = Tela::lerCampo("Limite WIP (1 a 25)             : ");
     try{
         identificadorProjeto.setValor(campoProjeto);
         identificador.setValor(campoIdentificador);
         nome.setValor(campoNome);
-        limite.setValor(converterNumero(campoLimite));
+        limite.setValor(Tela::converterNumero(campoLimite));
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
@@ -532,7 +571,7 @@ void CntrApresentacaoQuadros::criar(){
 
 void CntrApresentacaoQuadros::ler(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do quadro: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificador)){
         return;
     }
     Quadro quadro;
@@ -541,12 +580,12 @@ void CntrApresentacaoQuadros::ler(){
         cout << "Falha: quadro nao encontrado." << endl;
         return;
     }
-    mostrarQuadro(quadro);
+    Tela::mostrarQuadro(quadro);
 }
 
 void CntrApresentacaoQuadros::atualizar(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do quadro: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificador)){
         return;
     }
     Quadro quadro;
@@ -555,10 +594,10 @@ void CntrApresentacaoQuadros::atualizar(){
         cout << "Falha: quadro nao encontrado." << endl;
         return;
     }
-    mostrarQuadro(quadro);
+    Tela::mostrarQuadro(quadro);
     cout << "Digite os novos valores (Enter mantem o atual)." << endl;
-    string campoNome = lerCampo("Nome      : ");
-    string campoLimite = lerCampo("Limite WIP: ");
+    string campoNome = Tela::lerCampo("Nome      : ");
+    string campoLimite = Tela::lerCampo("Limite WIP: ");
     Nome nome;
     Limite limite;
     try{
@@ -567,7 +606,7 @@ void CntrApresentacaoQuadros::atualizar(){
             quadro.setNome(nome);
         }
         if (campoLimite.length() > 0){
-            limite.setValor(converterNumero(campoLimite));
+            limite.setValor(Tela::converterNumero(campoLimite));
             quadro.setLimite(limite);
         }
     }
@@ -584,7 +623,7 @@ void CntrApresentacaoQuadros::atualizar(){
 
 void CntrApresentacaoQuadros::excluir(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do quadro: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificador)){
         return;
     }
     if (cntr->excluir(identificador)){
@@ -596,16 +635,24 @@ void CntrApresentacaoQuadros::excluir(){
 
 void CntrApresentacaoQuadros::listar(){
     Identificador identificadorProjeto;
-    if (!lerIdentificador("Identificador do projeto: ", &identificadorProjeto)){
+    if (!Tela::lerIdentificador("Identificador do projeto: ", &identificadorProjeto)){
         return;
     }
-    listarIdentificadores(cntr->listar(identificadorProjeto), "Nenhum quadro neste projeto.");
+    Tela::listarIdentificadores(cntr->listar(identificadorProjeto), "Nenhum quadro neste projeto.");
+}
+
+void CntrApresentacaoCartoes::setCntrServicoCartoes(IServicoCartoes *cntr){
+    this->cntr = cntr;
+}
+
+void CntrApresentacaoCartoes::setCntrServicoPessoas(IServicoPessoas *cntr){
+    cntrServicoPessoas = cntr;
 }
 
 void CntrApresentacaoCartoes::executar(Email email){
     bool apresentar = true;
     while (apresentar){
-        bool gestor = ehGestor(cntrServicoPessoas, email);
+        bool gestor = Tela::ehGestor(cntrServicoPessoas, email);
         cout << endl << "CARTOES DE ATIVIDADE" << endl;
         if (gestor){
             cout << "1 - Criar cartao." << endl;
@@ -619,7 +666,7 @@ void CntrApresentacaoCartoes::executar(Email email){
         cout << "6 - Mover cartao." << endl;
         cout << "7 - Metricas." << endl;
         cout << "0 - Voltar." << endl;
-        int opcao = lerOpcao();
+        int opcao = Tela::lerOpcao();
         if (!gestor && (opcao == 1 || opcao == 3 || opcao == 4)){
             opcao = -1;
         }
@@ -655,7 +702,7 @@ void CntrApresentacaoCartoes::executarMetricas(){
         cout << "4 - Lead time medio de um quadro." << endl;
         cout << "5 - WIP de um quadro." << endl;
         cout << "0 - Voltar." << endl;
-        switch (lerOpcao()){
+        switch (Tela::lerOpcao()){
             case 1: lerTempoCiclo();
                     break;
             case 2: lerTempoCicloMedio();
@@ -682,13 +729,13 @@ void CntrApresentacaoCartoes::criar(){
     Tamanho tamanho;
     Timestamp entrada;
     cout << endl << "CRIAR CARTAO DE ATIVIDADE" << endl;
-    string campoQuadro = lerCampo("Identificador do quadro              : ");
-    string campoIdentificador = lerCampo("Identificador do cartao              : ");
-    string campoNome = lerCampo("Nome                                 : ");
-    string campoDescricao = lerCampo("Descricao                            : ");
-    string campoPrioridade = lerCampo("Prioridade (ALTA/MEDIA/BAIXA)        : ");
-    string campoTamanho = lerCampo("Tamanho (GRANDE/MEDIO/PEQUENO)       : ");
-    string campoEntrada = lerCampo("Entrada (ex.: 05-MAR-2026-09:00)     : ");
+    string campoQuadro = Tela::lerCampo("Identificador do quadro              : ");
+    string campoIdentificador = Tela::lerCampo("Identificador do cartao              : ");
+    string campoNome = Tela::lerCampo("Nome                                 : ");
+    string campoDescricao = Tela::lerCampo("Descricao                            : ");
+    string campoPrioridade = Tela::lerCampo("Prioridade (ALTA/MEDIA/BAIXA)        : ");
+    string campoTamanho = Tela::lerCampo("Tamanho (GRANDE/MEDIO/PEQUENO)       : ");
+    string campoEntrada = Tela::lerCampo("Entrada (ex.: 05-MAR-2026-09:00)     : ");
     try{
         identificadorQuadro.setValor(campoQuadro);
         identificador.setValor(campoIdentificador);
@@ -719,7 +766,7 @@ void CntrApresentacaoCartoes::criar(){
 
 void CntrApresentacaoCartoes::ler(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do cartao: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do cartao: ", &identificador)){
         return;
     }
     CartaoDeAtividade cartao;
@@ -728,12 +775,12 @@ void CntrApresentacaoCartoes::ler(){
         cout << "Falha: cartao nao encontrado." << endl;
         return;
     }
-    mostrarCartao(cartao);
+    Tela::mostrarCartao(cartao);
 }
 
 void CntrApresentacaoCartoes::atualizar(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do cartao: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do cartao: ", &identificador)){
         return;
     }
     CartaoDeAtividade cartao;
@@ -742,12 +789,12 @@ void CntrApresentacaoCartoes::atualizar(){
         cout << "Falha: cartao nao encontrado." << endl;
         return;
     }
-    mostrarCartao(cartao);
+    Tela::mostrarCartao(cartao);
     cout << "Digite os novos valores (Enter mantem o atual)." << endl;
-    string campoNome = lerCampo("Nome      : ");
-    string campoDescricao = lerCampo("Descricao : ");
-    string campoPrioridade = lerCampo("Prioridade: ");
-    string campoTamanho = lerCampo("Tamanho   : ");
+    string campoNome = Tela::lerCampo("Nome      : ");
+    string campoDescricao = Tela::lerCampo("Descricao : ");
+    string campoPrioridade = Tela::lerCampo("Prioridade: ");
+    string campoTamanho = Tela::lerCampo("Tamanho   : ");
     Nome nome;
     Texto descricao;
     Prioridade prioridade;
@@ -783,7 +830,7 @@ void CntrApresentacaoCartoes::atualizar(){
 
 void CntrApresentacaoCartoes::excluir(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do cartao: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do cartao: ", &identificador)){
         return;
     }
     if (cntr->excluir(identificador)){
@@ -795,18 +842,18 @@ void CntrApresentacaoCartoes::excluir(){
 
 void CntrApresentacaoCartoes::listar(){
     Identificador identificadorQuadro;
-    if (!lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
         return;
     }
-    listarIdentificadores(cntr->listar(identificadorQuadro), "Nenhum cartao neste quadro.");
+    Tela::listarIdentificadores(cntr->listar(identificadorQuadro), "Nenhum cartao neste quadro.");
 }
 
 void CntrApresentacaoCartoes::mover(){
     Identificador identificador;
     Timestamp momento;
     cout << endl << "MOVER CARTAO (A FAZER -> FAZENDO -> FEITO)" << endl;
-    string campoIdentificador = lerCampo("Identificador do cartao            : ");
-    string campoMomento = lerCampo("Horario (ex.: 06-MAR-2026-14:30)   : ");
+    string campoIdentificador = Tela::lerCampo("Identificador do cartao            : ");
+    string campoMomento = Tela::lerCampo("Horario (ex.: 06-MAR-2026-14:30)   : ");
     try{
         identificador.setValor(campoIdentificador);
         momento.setValor(campoMomento);
@@ -827,12 +874,12 @@ void CntrApresentacaoCartoes::mover(){
 
 void CntrApresentacaoCartoes::lerTempoCiclo(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do cartao: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do cartao: ", &identificador)){
         return;
     }
     int minutos;
     if (cntr->lerTempoCiclo(identificador, &minutos)){
-        mostrarTempo("Tempo de ciclo: ", minutos);
+        Tela::mostrarTempo("Tempo de ciclo: ", minutos);
     } else {
         cout << "Falha: cartao nao encontrado ou ainda nao esta em FEITO." << endl;
     }
@@ -840,12 +887,12 @@ void CntrApresentacaoCartoes::lerTempoCiclo(){
 
 void CntrApresentacaoCartoes::lerTempoCicloMedio(){
     Identificador identificadorQuadro;
-    if (!lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
         return;
     }
     int minutos;
     if (cntr->lerTempoCicloMedio(identificadorQuadro, &minutos)){
-        mostrarTempo("Tempo de ciclo medio: ", minutos);
+        Tela::mostrarTempo("Tempo de ciclo medio: ", minutos);
     } else {
         cout << "Falha: o quadro nao tem cartoes em FEITO." << endl;
     }
@@ -853,12 +900,12 @@ void CntrApresentacaoCartoes::lerTempoCicloMedio(){
 
 void CntrApresentacaoCartoes::lerLeadTime(){
     Identificador identificador;
-    if (!lerIdentificador("Identificador do cartao: ", &identificador)){
+    if (!Tela::lerIdentificador("Identificador do cartao: ", &identificador)){
         return;
     }
     int minutos;
     if (cntr->lerLeadTime(identificador, &minutos)){
-        mostrarTempo("Lead time: ", minutos);
+        Tela::mostrarTempo("Lead time: ", minutos);
     } else {
         cout << "Falha: cartao nao encontrado ou ainda nao esta em FEITO." << endl;
     }
@@ -866,12 +913,12 @@ void CntrApresentacaoCartoes::lerLeadTime(){
 
 void CntrApresentacaoCartoes::lerLeadTimeMedio(){
     Identificador identificadorQuadro;
-    if (!lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
         return;
     }
     int minutos;
     if (cntr->lerLeadTimeMedio(identificadorQuadro, &minutos)){
-        mostrarTempo("Lead time medio: ", minutos);
+        Tela::mostrarTempo("Lead time medio: ", minutos);
     } else {
         cout << "Falha: o quadro nao tem cartoes em FEITO." << endl;
     }
@@ -879,7 +926,7 @@ void CntrApresentacaoCartoes::lerLeadTimeMedio(){
 
 void CntrApresentacaoCartoes::lerWIP(){
     Identificador identificadorQuadro;
-    if (!lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
+    if (!Tela::lerIdentificador("Identificador do quadro: ", &identificadorQuadro)){
         return;
     }
     int quantidade;
