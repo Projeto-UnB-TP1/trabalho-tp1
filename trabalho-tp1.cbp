@@ -33,6 +33,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 		</Compiler>
 		<Unit filename="Apresentacao/ControladorasApresentacao.cpp">
 			<Option target="Sistema" />
