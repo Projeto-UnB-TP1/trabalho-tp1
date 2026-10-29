@@ -15,6 +15,7 @@ class Nome {
 private:
     std::string valor;
     void validar(std::string valor);
+    bool ehLetra(char c) const;
 public:
     /**
      * @brief Define o nome.
@@ -29,9 +30,5 @@ public:
      */
     std::string getValor() const;
 };
-
-inline std::string Nome::getValor() const {
-    return valor;
-}
 
 #endif
