@@ -14,4 +14,22 @@ class CntrServicoPessoas:public IServicoPessoas{
         list<Email> listar();
 };
 
+class CntrServicoProjetos:public IServicoProjetos{
+    public:
+        bool criar(Projeto);
+        bool ler(Projeto*);
+        bool atualizar(Projeto);
+        bool excluir(Identificador);
+        list<Identificador> listar();
+};
+
+class CntrServicoQuadros:public IServicoQuadros{
+    public:
+        bool criar(Quadro);
+        bool ler(Quadro*);
+        bool atualizar(Quadro);
+        bool excluir(Identificador);
+        list<Identificador> listar(Identificador);
+};
+
 #endif
