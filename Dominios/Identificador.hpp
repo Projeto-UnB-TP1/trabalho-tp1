@@ -29,8 +29,4 @@ public:
     std::string getValor() const;
 };
 
-inline std::string Identificador::getValor() const {
-    return valor;
-}
-
 #endif

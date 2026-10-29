@@ -14,7 +14,8 @@ class Texto {
 private:
     std::string valor;
     void validar(std::string valor);
-    bool isPontuacao(char c);
+    bool isPontuacao(char c) const;
+    bool isLetraOuDigito(char c) const;
 
 public:
     /**
