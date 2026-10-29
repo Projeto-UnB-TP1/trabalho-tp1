@@ -32,4 +32,23 @@ class CntrServicoQuadros:public IServicoQuadros{
         list<Identificador> listar(Identificador);
 };
 
+class CntrServicoCartoes:public IServicoCartoes{
+    private:
+        int contarFazendo(Identificador);
+        int tempoCiclo(CartaoDeAtividade);
+        int leadTime(CartaoDeAtividade);
+    public:
+        bool criar(CartaoDeAtividade);
+        bool ler(CartaoDeAtividade*);
+        bool atualizar(CartaoDeAtividade);
+        bool excluir(Identificador);
+        list<Identificador> listar(Identificador);
+        bool mover(Identificador, Timestamp);
+        bool lerTempoCiclo(Identificador, int*);
+        bool lerTempoCicloMedio(Identificador, int*);
+        bool lerLeadTime(Identificador, int*);
+        bool lerLeadTimeMedio(Identificador, int*);
+        bool lerWIP(Identificador, int*);
+};
+
 #endif

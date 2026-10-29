@@ -125,3 +125,176 @@ list<Identificador> CntrServicoQuadros::listar(Identificador identificadorProjet
     }
     return identificadores;
 }
+
+int CntrServicoCartoes::contarFazendo(Identificador identificadorQuadro){
+    int quantidade = 0;
+    list<CartaoDeAtividade> cartoes = ContainerCartao::getInstancia()->listar();
+    for (list<CartaoDeAtividade>::iterator cartao = cartoes.begin(); cartao != cartoes.end(); cartao++){
+        if (cartao->getIdentificadorQuadro().getValor() == identificadorQuadro.getValor() &&
+            cartao->getEstado().getValor() == "FAZENDO"){
+            quantidade++;
+        }
+    }
+    return quantidade;
+}
+
+int CntrServicoCartoes::tempoCiclo(CartaoDeAtividade cartao){
+    return cartao.getTermino().converterParaMinutos() - cartao.getInicio().converterParaMinutos();
+}
+
+int CntrServicoCartoes::leadTime(CartaoDeAtividade cartao){
+    return cartao.getTermino().converterParaMinutos() - cartao.getEntrada().converterParaMinutos();
+}
+
+bool CntrServicoCartoes::criar(CartaoDeAtividade cartao){
+    Quadro quadro;
+    quadro.setIdentificador(cartao.getIdentificadorQuadro());
+    if (!ContainerQuadro::getInstancia()->pesquisar(&quadro)){
+        return false;
+    }
+    if (cartao.getEntrada().getValor().length() == 0){
+        return false;
+    }
+    Estado estado;
+    estado.setValor("A FAZER");
+    cartao.setEstado(estado);
+    Timestamp vazio;
+    cartao.setInicio(vazio);
+    cartao.setTermino(vazio);
+    return ContainerCartao::getInstancia()->incluir(cartao);
+}
+
+bool CntrServicoCartoes::ler(CartaoDeAtividade *cartao){
+    return ContainerCartao::getInstancia()->pesquisar(cartao);
+}
+
+bool CntrServicoCartoes::atualizar(CartaoDeAtividade cartao){
+    CartaoDeAtividade atual;
+    atual.setIdentificador(cartao.getIdentificador());
+    if (!ContainerCartao::getInstancia()->pesquisar(&atual)){
+        return false;
+    }
+    cartao.setEstado(atual.getEstado());
+    cartao.setEntrada(atual.getEntrada());
+    cartao.setInicio(atual.getInicio());
+    cartao.setTermino(atual.getTermino());
+    cartao.setIdentificadorQuadro(atual.getIdentificadorQuadro());
+    return ContainerCartao::getInstancia()->atualizar(cartao);
+}
+
+bool CntrServicoCartoes::excluir(Identificador identificador){
+    return ContainerCartao::getInstancia()->remover(identificador);
+}
+
+list<Identificador> CntrServicoCartoes::listar(Identificador identificadorQuadro){
+    list<Identificador> identificadores;
+    list<CartaoDeAtividade> cartoes = ContainerCartao::getInstancia()->listar();
+    for (list<CartaoDeAtividade>::iterator cartao = cartoes.begin(); cartao != cartoes.end(); cartao++){
+        if (cartao->getIdentificadorQuadro().getValor() == identificadorQuadro.getValor()){
+            identificadores.push_back(cartao->getIdentificador());
+        }
+    }
+    return identificadores;
+}
+
+bool CntrServicoCartoes::mover(Identificador identificador, Timestamp momento){
+    CartaoDeAtividade cartao;
+    cartao.setIdentificador(identificador);
+    if (!ContainerCartao::getInstancia()->pesquisar(&cartao)){
+        return false;
+    }
+
+    Estado novoEstado;
+    if (cartao.getEstado().getValor() == "A FAZER"){
+        Quadro quadro;
+        quadro.setIdentificador(cartao.getIdentificadorQuadro());
+        if (!ContainerQuadro::getInstancia()->pesquisar(&quadro)){
+            return false;
+        }
+        if (contarFazendo(quadro.getIdentificador()) >= quadro.getLimite().getValor()){
+            return false;
+        }
+        if (momento.converterParaMinutos() < cartao.getEntrada().converterParaMinutos()){
+            return false;
+        }
+        novoEstado.setValor("FAZENDO");
+        cartao.setInicio(momento);
+    } else if (cartao.getEstado().getValor() == "FAZENDO"){
+        if (momento.converterParaMinutos() < cartao.getInicio().converterParaMinutos()){
+            return false;
+        }
+        novoEstado.setValor("FEITO");
+        cartao.setTermino(momento);
+    } else {
+        return false;
+    }
+
+    cartao.setEstado(novoEstado);
+    return ContainerCartao::getInstancia()->atualizar(cartao);
+}
+
+bool CntrServicoCartoes::lerTempoCiclo(Identificador identificador, int *resultado){
+    CartaoDeAtividade cartao;
+    cartao.setIdentificador(identificador);
+    if (!ContainerCartao::getInstancia()->pesquisar(&cartao) || cartao.getEstado().getValor() != "FEITO"){
+        return false;
+    }
+    *resultado = tempoCiclo(cartao);
+    return true;
+}
+
+bool CntrServicoCartoes::lerTempoCicloMedio(Identificador identificadorQuadro, int *resultado){
+    int soma = 0;
+    int concluidos = 0;
+    list<CartaoDeAtividade> cartoes = ContainerCartao::getInstancia()->listar();
+    for (list<CartaoDeAtividade>::iterator cartao = cartoes.begin(); cartao != cartoes.end(); cartao++){
+        if (cartao->getIdentificadorQuadro().getValor() == identificadorQuadro.getValor() &&
+            cartao->getEstado().getValor() == "FEITO"){
+            soma = soma + tempoCiclo(*cartao);
+            concluidos++;
+        }
+    }
+    if (concluidos == 0){
+        return false;
+    }
+    *resultado = soma / concluidos;
+    return true;
+}
+
+bool CntrServicoCartoes::lerLeadTime(Identificador identificador, int *resultado){
+    CartaoDeAtividade cartao;
+    cartao.setIdentificador(identificador);
+    if (!ContainerCartao::getInstancia()->pesquisar(&cartao) || cartao.getEstado().getValor() != "FEITO"){
+        return false;
+    }
+    *resultado = leadTime(cartao);
+    return true;
+}
+
+bool CntrServicoCartoes::lerLeadTimeMedio(Identificador identificadorQuadro, int *resultado){
+    int soma = 0;
+    int concluidos = 0;
+    list<CartaoDeAtividade> cartoes = ContainerCartao::getInstancia()->listar();
+    for (list<CartaoDeAtividade>::iterator cartao = cartoes.begin(); cartao != cartoes.end(); cartao++){
+        if (cartao->getIdentificadorQuadro().getValor() == identificadorQuadro.getValor() &&
+            cartao->getEstado().getValor() == "FEITO"){
+            soma = soma + leadTime(*cartao);
+            concluidos++;
+        }
+    }
+    if (concluidos == 0){
+        return false;
+    }
+    *resultado = soma / concluidos;
+    return true;
+}
+
+bool CntrServicoCartoes::lerWIP(Identificador identificadorQuadro, int *resultado){
+    Quadro quadro;
+    quadro.setIdentificador(identificadorQuadro);
+    if (!ContainerQuadro::getInstancia()->pesquisar(&quadro)){
+        return false;
+    }
+    *resultado = contarFazendo(identificadorQuadro);
+    return true;
+}
