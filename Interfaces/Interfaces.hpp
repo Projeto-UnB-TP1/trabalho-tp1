@@ -27,6 +27,7 @@ class IApresentacaoProjetos {
     public:
         virtual void executar(Email) = 0;
         virtual void setCntrServicoProjetos(IServicoProjetos*) = 0;
+        virtual void setCntrServicoPessoas(IServicoPessoas*) = 0;
         virtual ~IApresentacaoProjetos(){}
 };
 
@@ -34,6 +35,7 @@ class IApresentacaoQuadros {
     public:
         virtual void executar(Email) = 0;
         virtual void setCntrServicoQuadros(IServicoQuadros*) = 0;
+        virtual void setCntrServicoPessoas(IServicoPessoas*) = 0;
         virtual ~IApresentacaoQuadros(){}
 };
 
@@ -41,6 +43,7 @@ class IApresentacaoCartoes {
     public:
         virtual void executar(Email) = 0;
         virtual void setCntrServicoCartoes(IServicoCartoes*) = 0;
+        virtual void setCntrServicoPessoas(IServicoPessoas*) = 0;
         virtual ~IApresentacaoCartoes(){}
 };
 
