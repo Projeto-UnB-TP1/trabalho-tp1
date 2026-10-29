@@ -24,7 +24,7 @@ public:
 
     /**
      * @brief Retorna o identificador.
-     * @return std::string 
+     * @return std::string O identificador atual, no formato LLLDDD.
      */
     std::string getValor() const;
 };

@@ -26,7 +26,7 @@ public:
 
     /**
      * @brief Retorna o nome.
-     * @return std::string 
+     * @return std::string O nome atual.
      */
     std::string getValor() const;
 };
