@@ -4,27 +4,39 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @brief Classe de domínio que representa o Tamanho.
- * Regra de formato: GRANDE, MEDIO ou PEQUENO.
- */
+///
+/// Padrão para representação de tamanho de cartão de atividade.
+///
+/// Regras de formato:
+///
+/// - Tamanho é válido caso seja GRANDE, MEDIO ou PEQUENO.
+///
+
 class Tamanho {
 private:
     std::string valor;
     void validar(std::string valor);
 
 public:
-    /**
-     * @brief Define o valor do tamanho.
-     * @param valor String representando o tamanho.
-     * @throw std::invalid_argument Se o tamanho for diferente de GRANDE, MEDIO ou PEQUENO.
-     */
+
+///
+/// Armazena tamanho caso o mesmo seja válido.
+///
+/// Lança exceção caso o tamanho seja inválido.
+///
+/// @param valor Tamanho.
+///
+/// @throw invalid_argument
+///
+
     void setValor(std::string valor);
 
-    /**
-     * @brief Retorna o valor do tamanho.
-     * @return std::string O tamanho atual.
-     */
+///
+/// Retorna tamanho.
+///
+/// @return Tamanho.
+///
+
     std::string getValor() const;
 };
 

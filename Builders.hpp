@@ -5,6 +5,10 @@
 #include "Apresentacao/ControladorasApresentacao.hpp"
 #include "Servicos/ControladorasServico.hpp"
 
+///
+/// Constrói o sistema, criando as controladoras e estabelecendo as ligações entre elas.
+///
+
 class BuilderSistema{
     private:
         CntrApresentacaoControle *cntrApresentacaoControle;
@@ -17,7 +21,19 @@ class BuilderSistema{
         IServicoQuadros *cntrServicoQuadros;
         IServicoCartoes *cntrServicoCartoes;
     public:
+
+///
+/// Cria as controladoras e estabelece as ligações entre elas.
+///
+/// @return Controladora que coordena o sistema.
+///
+
         CntrApresentacaoControle* construir();
+
+///
+/// Destrói as controladoras criadas.
+///
+
         ~BuilderSistema();
 };
 

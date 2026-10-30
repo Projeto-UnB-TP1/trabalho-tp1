@@ -9,207 +9,188 @@
 #include "../Dominios/Tamanho.hpp"
 #include "../Dominios/Timestamp.hpp"
 
-/**
- * @file CartaoDeAtividade.hpp
- * @brief Declaração da classe de entidade CartaoDeAtividade.
- */
+///
+/// Entidade que representa cartão de atividade.
+///
+/// Atributos: identificador, nome, descrição, prioridade, estado, tamanho, entrada, início, término e identificador do quadro.
+///
+/// O identificador identifica o cartão. O identificador do quadro indica o quadro ao qual o cartão pertence.
+///
 
-/**
- * @brief Entidade que representa um cartão de atividade de um quadro Kanban.
- *
- * @details Um cartão de atividade possui identificador, nome, descrição, prioridade,
- * estado, tamanho e três marcas de tempo (entrada, início e término). Cada atributo
- * é uma instância de uma classe de domínio, portanto o formato de cada valor já é
- * garantido pelo próprio domínio: a validação acontece quando o objeto de domínio
- * é preenchido (método setValor do domínio), e esta classe apenas armazena e
- * devolve os objetos recebidos.
- *
- * O identificador é a chave primária do cartão e não deve ser alterado depois que o
- * cartão é criado.
- *
- * O estado indica a coluna do quadro em que o cartão está (A FAZER, FAZENDO ou FEITO).
- * As marcas de tempo servem de base para as métricas do quadro:
- * - **entrada:** momento em que o cartão entra na coluna A FAZER;
- * - **início:** momento em que o cartão entra na coluna FAZENDO;
- * - **término:** momento em que o cartão chega à coluna FEITO.
- *
- * Com elas, o tempo de ciclo (cycle time) de um cartão é a diferença entre o término
- * e o início, e o lead time é a diferença entre o término e a entrada. Esta classe
- * apenas armazena as marcas de tempo; o cálculo das métricas é responsabilidade
- * de quem usa a entidade.
- *
- * Relacionamentos:
- * - um cartão pertence a exatamente um quadro. Esse relacionamento
- *   (Quadro 1 : 0..* CartaoDeAtividade) é representado pelo identificador do quadro
- *   (veja setIdentificadorQuadro).
- *
- * Exemplo de uso:
- * @code
- * Identificador id;
- * id.setValor("CRT001");
- *
- * CartaoDeAtividade cartao;
- * cartao.setIdentificador(id);
- * Identificador lido = cartao.getIdentificador();   // lido.getValor() == "CRT001"
- * @endcode
- */
 class CartaoDeAtividade{
   private:
-  /** @brief Identificador do cartão (chave primária). */
-  Identificador identificador;
-
-  /** @brief Nome do cartão. */
-  Nome nome;
-
-  /** @brief Descrição da atividade. */
-  Texto descricao;
-
-  /** @brief Prioridade da atividade: ALTA, MEDIA ou BAIXA. */
-  Prioridade prioridade;
-
-  /** @brief Estado do cartão, que indica a coluna do quadro: A FAZER, FAZENDO ou FEITO. */
-  Estado estado;
-
-  /** @brief Tamanho da atividade: GRANDE, MEDIO ou PEQUENO. */
-  Tamanho tamanho;
-
-  /** @brief Momento em que o cartão entra na coluna A FAZER (início do lead time). */
-  Timestamp entrada;
-
-  /** @brief Momento em que o cartão entra na coluna FAZENDO (início do tempo de ciclo). */
-  Timestamp inicio;
-
-  /** @brief Momento em que o cartão chega à coluna FEITO (fim do tempo de ciclo e do lead time). */
-  Timestamp termino;
-
-  /**
-   * @brief Identificador do quadro ao qual o cartão pertence.
-   * @details Implementa o relacionamento Quadro 1 : 0..* CartaoDeAtividade.
-   */
-  Identificador identificadorQuadro;
+    Identificador identificador;
+    Nome nome;
+    Texto descricao;
+    Prioridade prioridade;
+    Estado estado;
+    Tamanho tamanho;
+    Timestamp entrada;
+    Timestamp inicio;
+    Timestamp termino;
+    Identificador identificadorQuadro;
 
   public:
-  /**
-   * @brief Atribui o identificador do cartão.
-   * @param identificador Objeto Identificador já validado pelo domínio.
-   * @note O identificador não deve ser alterado após a criação do cartão.
-   */
-  void setIdentificador(Identificador identificador);
 
-  /**
-   * @brief Obtém o identificador do cartão.
-   * @return Objeto Identificador armazenado.
-   */
-  Identificador getIdentificador() const;
+///
+/// Armazena identificador.
+///
+/// @param identificador Identificador.
+///
 
-  /**
-   * @brief Atribui o nome do cartão.
-   * @param nome Objeto Nome já validado pelo domínio.
-   */
-  void setNome(Nome nome);
+    void setIdentificador(Identificador identificador);
 
-  /**
-   * @brief Obtém o nome do cartão.
-   * @return Objeto Nome armazenado.
-   */
-  Nome getNome() const;
+///
+/// Retorna identificador.
+///
+/// @return Identificador.
+///
 
-  /**
-   * @brief Atribui a descrição da atividade.
-   * @param descricao Objeto Texto já validado pelo domínio.
-   */
-  void setDescricao(Texto descricao);
+    Identificador getIdentificador() const;
 
-  /**
-   * @brief Obtém a descrição da atividade.
-   * @return Objeto Texto armazenado.
-   */
-  Texto getDescricao() const;
+///
+/// Armazena nome.
+///
+/// @param nome Nome.
+///
 
-  /**
-   * @brief Atribui a prioridade da atividade.
-   * @param prioridade Objeto Prioridade já validado pelo domínio (ALTA, MEDIA ou BAIXA).
-   */
-  void setPrioridade(Prioridade prioridade);
+    void setNome(Nome nome);
 
-  /**
-   * @brief Obtém a prioridade da atividade.
-   * @return Objeto Prioridade armazenado.
-   */
-  Prioridade getPrioridade() const;
+///
+/// Retorna nome.
+///
+/// @return Nome.
+///
 
-  /**
-   * @brief Atribui o estado do cartão.
-   * @param estado Objeto Estado já validado pelo domínio (A FAZER, FAZENDO ou FEITO).
-   */
-  void setEstado(Estado estado);
+    Nome getNome() const;
 
-  /**
-   * @brief Obtém o estado do cartão.
-   * @return Objeto Estado armazenado.
-   */
-  Estado getEstado() const;
+///
+/// Armazena descrição.
+///
+/// @param descricao Descrição.
+///
 
-  /**
-   * @brief Atribui o tamanho da atividade.
-   * @param tamanho Objeto Tamanho já validado pelo domínio (GRANDE, MEDIO ou PEQUENO).
-   */
-  void setTamanho(Tamanho tamanho);
+    void setDescricao(Texto descricao);
 
-  /**
-   * @brief Obtém o tamanho da atividade.
-   * @return Objeto Tamanho armazenado.
-   */
-  Tamanho getTamanho() const;
+///
+/// Retorna descrição.
+///
+/// @return Descrição.
+///
 
-  /**
-   * @brief Atribui o momento de entrada do cartão na coluna A FAZER.
-   * @param entrada Objeto Timestamp já validado pelo domínio.
-   */
-  void setEntrada(Timestamp entrada);
+    Texto getDescricao() const;
 
-  /**
-   * @brief Obtém o momento de entrada do cartão na coluna A FAZER.
-   * @return Objeto Timestamp armazenado.
-   */
-  Timestamp getEntrada() const;
+///
+/// Armazena prioridade.
+///
+/// @param prioridade Prioridade.
+///
 
-  /**
-   * @brief Atribui o momento em que o cartão entra na coluna FAZENDO.
-   * @param inicio Objeto Timestamp já validado pelo domínio.
-   */
-  void setInicio(Timestamp inicio);
+    void setPrioridade(Prioridade prioridade);
 
-  /**
-   * @brief Obtém o momento em que o cartão entra na coluna FAZENDO.
-   * @return Objeto Timestamp armazenado.
-   */
-  Timestamp getInicio() const;
+///
+/// Retorna prioridade.
+///
+/// @return Prioridade.
+///
 
-  /**
-   * @brief Atribui o momento em que o cartão chega à coluna FEITO.
-   * @param termino Objeto Timestamp já validado pelo domínio.
-   */
-  void setTermino(Timestamp termino);
+    Prioridade getPrioridade() const;
 
-  /**
-   * @brief Obtém o momento em que o cartão chega à coluna FEITO.
-   * @return Objeto Timestamp armazenado.
-   */
-  Timestamp getTermino() const;
+///
+/// Armazena estado, que indica a coluna do quadro.
+///
+/// @param estado Estado.
+///
 
-  /**
-   * @brief Atribui o identificador do quadro ao qual o cartão pertence.
-   * @param identificadorQuadro Objeto Identificador já validado pelo domínio,
-   *        correspondente a um Quadro existente.
-   */
-  void setIdentificadorQuadro(Identificador identificadorQuadro);
+    void setEstado(Estado estado);
 
-  /**
-   * @brief Obtém o identificador do quadro ao qual o cartão pertence.
-   * @return Objeto Identificador armazenado.
-   */
-  Identificador getIdentificadorQuadro() const;
+///
+/// Retorna estado, que indica a coluna do quadro.
+///
+/// @return Estado.
+///
+
+    Estado getEstado() const;
+
+///
+/// Armazena tamanho.
+///
+/// @param tamanho Tamanho.
+///
+
+    void setTamanho(Tamanho tamanho);
+
+///
+/// Retorna tamanho.
+///
+/// @return Tamanho.
+///
+
+    Tamanho getTamanho() const;
+
+///
+/// Armazena data e horário de entrada na coluna A FAZER.
+///
+/// @param entrada Entrada.
+///
+
+    void setEntrada(Timestamp entrada);
+
+///
+/// Retorna data e horário de entrada na coluna A FAZER.
+///
+/// @return Entrada.
+///
+
+    Timestamp getEntrada() const;
+
+///
+/// Armazena data e horário de entrada na coluna FAZENDO.
+///
+/// @param inicio Início.
+///
+
+    void setInicio(Timestamp inicio);
+
+///
+/// Retorna data e horário de entrada na coluna FAZENDO.
+///
+/// @return Início.
+///
+
+    Timestamp getInicio() const;
+
+///
+/// Armazena data e horário de entrada na coluna FEITO.
+///
+/// @param termino Término.
+///
+
+    void setTermino(Timestamp termino);
+
+///
+/// Retorna data e horário de entrada na coluna FEITO.
+///
+/// @return Término.
+///
+
+    Timestamp getTermino() const;
+
+///
+/// Armazena identificador do quadro.
+///
+/// @param identificadorQuadro Identificador do quadro.
+///
+
+    void setIdentificadorQuadro(Identificador identificadorQuadro);
+
+///
+/// Retorna identificador do quadro.
+///
+/// @return Identificador do quadro.
+///
+
+    Identificador getIdentificadorQuadro() const;
 };
 
 #endif

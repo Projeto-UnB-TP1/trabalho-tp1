@@ -4,15 +4,19 @@
 #include <string>
 #include <stdexcept>
 
-/**
- * @brief Classe de domínio que representa data e horário.
- * Regra de formato: DIA-MES-ANO-HORARIO, por exemplo 29-FEV-2024-13:45.
- * DIA é número de 1 a 31, com um ou dois dígitos.
- * MES é JAN, FEV, MAR, ABR, MAI, JUN, JUL, AGO, SET, OUT, NOV ou DEZ.
- * ANO é número de 2000 a 2099.
- * HORARIO é valor de 00:00 a 23:59.
- * A data deve existir, considerando anos bissextos.
- */
+///
+/// Padrão para representação de data e horário.
+///
+/// Regras de formato:
+///
+/// - Formato DIA-MES-ANO-HORARIO, por exemplo 29-FEV-2024-13:45.
+/// - DIA de 1 a 31, com um ou dois dígitos.
+/// - MES é JAN, FEV, MAR, ABR, MAI, JUN, JUL, AGO, SET, OUT, NOV ou DEZ.
+/// - ANO de 2000 a 2099.
+/// - HORARIO de 00:00 a 23:59.
+/// - Data existente, considerando anos bissextos.
+///
+
 class Timestamp{
   private:
   std::string valor;
@@ -24,27 +28,36 @@ class Timestamp{
 
   public:
 
-  /**
-   * @brief Define o valor do timestamp.
-   * @param valor Texto no formato DIA-MES-ANO-HORARIO.
-   * @throw std::invalid_argument Se o texto não seguir o formato ou se a data não existir.
-   */
+///
+/// Armazena data e horário caso os mesmos sejam válidos.
+///
+/// Lança exceção caso a data ou o horário sejam inválidos.
+///
+/// @param valor Data e horário.
+///
+/// @throw invalid_argument
+///
+
   void setValor(std::string valor);
 
-  /**
-   * @brief Retorna o valor do timestamp.
-   * @return std::string O timestamp atual, no formato DIA-MES-ANO-HORARIO.
-   */
+///
+/// Retorna data e horário.
+///
+/// @return Data e horário.
+///
+
   std::string getValor() const;
 
-  /**
-   * @brief Converte o timestamp em minutos contados a partir de 1-JAN-2000-00:00.
-   *
-   * A diferença entre os valores convertidos de dois timestamps é a duração, em minutos,
-   * entre eles. Usado no cálculo de tempo de ciclo e lead time.
-   * @return int Quantidade de minutos desde 1-JAN-2000-00:00.
-   * @throw std::invalid_argument Se o timestamp ainda não tiver valor.
-   */
+///
+/// Retorna quantidade de minutos desde 1-JAN-2000-00:00.
+///
+/// Lança exceção caso não exista data e horário armazenados.
+///
+/// @return Quantidade de minutos.
+///
+/// @throw invalid_argument
+///
+
   int converterParaMinutos() const;
 };
 
