@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="trabalho-tp1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Sistema">
+				<Option output="bin/Sistema/kanban" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Sistema/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Testes">
+				<Option output="bin/Testes/testes" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Testes/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+		</Compiler>
+		<Unit filename="Apresentacao/ControladorasApresentacao.cpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Apresentacao/ControladorasApresentacao.hpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Builders.cpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Builders.hpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Dominios/E-mail.cpp" />
+		<Unit filename="Dominios/E-mail.hpp" />
+		<Unit filename="Dominios/Estado.cpp" />
+		<Unit filename="Dominios/Estado.hpp" />
+		<Unit filename="Dominios/Identificador.cpp" />
+		<Unit filename="Dominios/Identificador.hpp" />
+		<Unit filename="Dominios/Limite.cpp" />
+		<Unit filename="Dominios/Limite.hpp" />
+		<Unit filename="Dominios/Nome.cpp" />
+		<Unit filename="Dominios/Nome.hpp" />
+		<Unit filename="Dominios/Papel.cpp" />
+		<Unit filename="Dominios/Papel.hpp" />
+		<Unit filename="Dominios/Prioridade.cpp" />
+		<Unit filename="Dominios/Prioridade.hpp" />
+		<Unit filename="Dominios/Senha.cpp" />
+		<Unit filename="Dominios/Senha.hpp" />
+		<Unit filename="Dominios/Tamanho.cpp" />
+		<Unit filename="Dominios/Tamanho.hpp" />
+		<Unit filename="Dominios/Texto.cpp" />
+		<Unit filename="Dominios/Texto.hpp" />
+		<Unit filename="Dominios/Timestamp.cpp" />
+		<Unit filename="Dominios/Timestamp.hpp" />
+		<Unit filename="Entidades/CartaoDeAtividade.cpp" />
+		<Unit filename="Entidades/CartaoDeAtividade.hpp" />
+		<Unit filename="Entidades/Pessoa.cpp" />
+		<Unit filename="Entidades/Pessoa.hpp" />
+		<Unit filename="Entidades/Projeto.cpp" />
+		<Unit filename="Entidades/Projeto.hpp" />
+		<Unit filename="Entidades/Quadro.cpp" />
+		<Unit filename="Entidades/Quadro.hpp" />
+		<Unit filename="Interfaces/Interfaces.hpp" />
+		<Unit filename="Servicos/Containers.cpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Servicos/Containers.hpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Servicos/ControladorasServico.cpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Servicos/ControladorasServico.hpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Unit filename="Testes/main_testes.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="Testes/testes.cpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="Testes/testes.hpp">
+			<Option target="Testes" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option target="Sistema" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
