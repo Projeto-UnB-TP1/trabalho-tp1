@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentação Trabalho final TP1: Código-Fonte de /Users/Vinny/Programação/Técnicas de Progrmação 1/trabalho-tp1/Servicos/ControladorasServico.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentação Trabalho final TP1<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": false,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a href="dir_af657f9084226852dd6d99389998666c.html">Programação</a></li><li class="navelem"><a href="dir_286183d1059dc64e425eeba1c274c040.html">Técnicas de Progrmação 1</a></li><li class="navelem"><a href="dir_40e3d29180aa8981ecb7ac74d46bfb2b.html">trabalho-tp1</a></li><li class="navelem"><a href="dir_372d37c41cfe0556ee42f2bbaa24f162.html">Servicos</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">ControladorasServico.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_controladoras_servico_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CONTROLADORASSERVICO_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CONTROLADORASSERVICO_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_interfaces_8hpp.html">../Interfaces/Interfaces.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_containers_8hpp.html">Containers.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_cntr_servico_pessoas.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_cntr_servico_pessoas.html">CntrServicoPessoas</a>:<span class="keyword">public</span> <a class="code hl_class" href="class_i_servico_pessoas.html">IServicoPessoas</a>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_pessoas.html#ac23dbee119735bb5f19229d911fd3cf6">autenticar</a>(<a class="code hl_class" href="class_email.html">Email</a> email, <a class="code hl_class" href="class_senha.html">Senha</a> senha);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_pessoas.html#a8d5767cdf1418100c1fd88b3da9de7d8">criar</a>(<a class="code hl_class" href="class_pessoa.html">Pessoa</a> pessoa);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_pessoas.html#adee041be81461232763e5adc4c8b5f3c">ler</a>(<a class="code hl_class" href="class_pessoa.html">Pessoa</a> *pessoa);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_pessoas.html#a6990e37b85c7b2f9fb3be8b5044491b8">atualizar</a>(<a class="code hl_class" href="class_pessoa.html">Pessoa</a> pessoa);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_pessoas.html#a1a97fea0da32b8f365f7faf8f126590a">excluir</a>(<a class="code hl_class" href="class_email.html">Email</a> email);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        list&lt;Email&gt; <a class="code hl_function" href="class_cntr_servico_pessoas.html#a70eabfd2ab5d4a190a784dc863423644">listar</a>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_cntr_servico_projetos.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="class_cntr_servico_projetos.html">CntrServicoProjetos</a>:<span class="keyword">public</span> <a class="code hl_class" href="class_i_servico_projetos.html">IServicoProjetos</a>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_projetos.html#a179b2ef58d118b3b0ff6cec69673791f">criar</a>(<a class="code hl_class" href="class_projeto.html">Projeto</a> projeto);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_projetos.html#affb425cc136810f796781b8f213e6079">ler</a>(<a class="code hl_class" href="class_projeto.html">Projeto</a> *projeto);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_projetos.html#a7a84212613b944d1f8d240e344fd3cf1">atualizar</a>(<a class="code hl_class" href="class_projeto.html">Projeto</a> projeto);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_projetos.html#afce5601ea455b776309185c55daca61e">excluir</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        list&lt;Identificador&gt; <a class="code hl_function" href="class_cntr_servico_projetos.html#a34ef997958ff6590ed9bb7d7d0769ed5">listar</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_cntr_servico_quadros.html">   44</a></span><span class="keyword">class </span><a class="code hl_class" href="class_cntr_servico_quadros.html">CntrServicoQuadros</a>:<span class="keyword">public</span> <a class="code hl_class" href="class_i_servico_quadros.html">IServicoQuadros</a>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_quadros.html#a8257f3324b1307a990650109cad66b10">criar</a>(<a class="code hl_class" href="class_quadro.html">Quadro</a> quadro);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_quadros.html#a61de1007db2b11ab67a7aabc44d07a8a">ler</a>(<a class="code hl_class" href="class_quadro.html">Quadro</a> *quadro);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_quadros.html#a309322e5c05323f0436d81ec7e594a6a">atualizar</a>(<a class="code hl_class" href="class_quadro.html">Quadro</a> quadro);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_quadros.html#a0a5103876bddfd61449286e41b6b71e7">excluir</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        list&lt;Identificador&gt; <a class="code hl_function" href="class_cntr_servico_quadros.html#a90ed85e157d5e9475e0b3a425359b66d">listar</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorProjeto);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_cntr_servico_cartoes.html">   59</a></span><span class="keyword">class </span><a class="code hl_class" href="class_cntr_servico_cartoes.html">CntrServicoCartoes</a>:<span class="keyword">public</span> <a class="code hl_class" href="class_i_servico_cartoes.html">IServicoCartoes</a>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">int</span> contarFazendo(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorQuadro);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">int</span> tempoCiclo(<a class="code hl_class" href="class_cartao_de_atividade.html">CartaoDeAtividade</a> cartao);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">int</span> leadTime(<a class="code hl_class" href="class_cartao_de_atividade.html">CartaoDeAtividade</a> cartao);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a142b3fe1006618b3d71907417821e0b5">criar</a>(<a class="code hl_class" href="class_cartao_de_atividade.html">CartaoDeAtividade</a> cartao);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a408e625f2bc9e773629fb53a6bc9659b">ler</a>(<a class="code hl_class" href="class_cartao_de_atividade.html">CartaoDeAtividade</a> *cartao);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a78f8ca08123a046154ad0adb4de46fdc">atualizar</a>(<a class="code hl_class" href="class_cartao_de_atividade.html">CartaoDeAtividade</a> cartao);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#af25c455a4fc9dfea0ee1afb43ec7a8bf">excluir</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        list&lt;Identificador&gt; <a class="code hl_function" href="class_cntr_servico_cartoes.html#ab1c6518d3aba5a03553451c16249a4d6">listar</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorQuadro);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a26ced043cff715309faff537c8121c04">mover</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador, <a class="code hl_class" href="class_timestamp.html">Timestamp</a> momento);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#ae7f92859be529f9fd662238b225bd204">lerTempoCiclo</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador, <span class="keywordtype">int</span> *resultado);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a32f3eff96064e3ecdb01ce15b2bf8576">lerTempoCicloMedio</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorQuadro, <span class="keywordtype">int</span> *resultado);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a46259bfe2f551e290f4d7ef3cc0589f2">lerLeadTime</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificador, <span class="keywordtype">int</span> *resultado);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a0a756db6a0e431fb5f0c755720886068">lerLeadTimeMedio</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorQuadro, <span class="keywordtype">int</span> *resultado);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_cntr_servico_cartoes.html#a881144931019351bbfca228a9e1d073f">lerWIP</a>(<a class="code hl_class" href="class_identificador.html">Identificador</a> identificadorQuadro, <span class="keywordtype">int</span> *resultado);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
+</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_containers_8hpp_html"><div class="ttname"><a href="_containers_8hpp.html">Containers.hpp</a></div></div>
+<div class="ttc" id="a_interfaces_8hpp_html"><div class="ttname"><a href="_interfaces_8hpp.html">Interfaces.hpp</a></div></div>
+<div class="ttc" id="aclass_cartao_de_atividade_html"><div class="ttname"><a href="class_cartao_de_atividade.html">CartaoDeAtividade</a></div><div class="ttdef"><b>Definição</b> CartaoDeAtividade.hpp:20</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html"><div class="ttname"><a href="class_cntr_servico_cartoes.html">CntrServicoCartoes</a></div><div class="ttdef"><b>Definição</b> ControladorasServico.hpp:59</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a0a756db6a0e431fb5f0c755720886068"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a0a756db6a0e431fb5f0c755720886068">CntrServicoCartoes::lerLeadTimeMedio</a></div><div class="ttdeci">bool lerLeadTimeMedio(Identificador identificadorQuadro, int *resultado)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:274</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a142b3fe1006618b3d71907417821e0b5"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a142b3fe1006618b3d71907417821e0b5">CntrServicoCartoes::criar</a></div><div class="ttdeci">bool criar(CartaoDeAtividade cartao)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:149</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a26ced043cff715309faff537c8121c04"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a26ced043cff715309faff537c8121c04">CntrServicoCartoes::mover</a></div><div class="ttdeci">bool mover(Identificador identificador, Timestamp momento)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:200</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a32f3eff96064e3ecdb01ce15b2bf8576"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a32f3eff96064e3ecdb01ce15b2bf8576">CntrServicoCartoes::lerTempoCicloMedio</a></div><div class="ttdeci">bool lerTempoCicloMedio(Identificador identificadorQuadro, int *resultado)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:246</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a408e625f2bc9e773629fb53a6bc9659b"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a408e625f2bc9e773629fb53a6bc9659b">CntrServicoCartoes::ler</a></div><div class="ttdeci">bool ler(CartaoDeAtividade *cartao)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:167</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a46259bfe2f551e290f4d7ef3cc0589f2"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a46259bfe2f551e290f4d7ef3cc0589f2">CntrServicoCartoes::lerLeadTime</a></div><div class="ttdeci">bool lerLeadTime(Identificador identificador, int *resultado)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:264</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a78f8ca08123a046154ad0adb4de46fdc"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a78f8ca08123a046154ad0adb4de46fdc">CntrServicoCartoes::atualizar</a></div><div class="ttdeci">bool atualizar(CartaoDeAtividade cartao)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:171</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_a881144931019351bbfca228a9e1d073f"><div class="ttname"><a href="class_cntr_servico_cartoes.html#a881144931019351bbfca228a9e1d073f">CntrServicoCartoes::lerWIP</a></div><div class="ttdeci">bool lerWIP(Identificador identificadorQuadro, int *resultado)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:292</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_ab1c6518d3aba5a03553451c16249a4d6"><div class="ttname"><a href="class_cntr_servico_cartoes.html#ab1c6518d3aba5a03553451c16249a4d6">CntrServicoCartoes::listar</a></div><div class="ttdeci">list&lt; Identificador &gt; listar(Identificador identificadorQuadro)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:189</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_ae7f92859be529f9fd662238b225bd204"><div class="ttname"><a href="class_cntr_servico_cartoes.html#ae7f92859be529f9fd662238b225bd204">CntrServicoCartoes::lerTempoCiclo</a></div><div class="ttdeci">bool lerTempoCiclo(Identificador identificador, int *resultado)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:236</div></div>
+<div class="ttc" id="aclass_cntr_servico_cartoes_html_af25c455a4fc9dfea0ee1afb43ec7a8bf"><div class="ttname"><a href="class_cntr_servico_cartoes.html#af25c455a4fc9dfea0ee1afb43ec7a8bf">CntrServicoCartoes::excluir</a></div><div class="ttdeci">bool excluir(Identificador identificador)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:185</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html"><div class="ttname"><a href="class_cntr_servico_pessoas.html">CntrServicoPessoas</a></div><div class="ttdef"><b>Definição</b> ControladorasServico.hpp:13</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_a1a97fea0da32b8f365f7faf8f126590a"><div class="ttname"><a href="class_cntr_servico_pessoas.html#a1a97fea0da32b8f365f7faf8f126590a">CntrServicoPessoas::excluir</a></div><div class="ttdeci">bool excluir(Email email)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:24</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_a6990e37b85c7b2f9fb3be8b5044491b8"><div class="ttname"><a href="class_cntr_servico_pessoas.html#a6990e37b85c7b2f9fb3be8b5044491b8">CntrServicoPessoas::atualizar</a></div><div class="ttdeci">bool atualizar(Pessoa pessoa)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:20</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_a70eabfd2ab5d4a190a784dc863423644"><div class="ttname"><a href="class_cntr_servico_pessoas.html#a70eabfd2ab5d4a190a784dc863423644">CntrServicoPessoas::listar</a></div><div class="ttdeci">list&lt; Email &gt; listar()</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:34</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_a8d5767cdf1418100c1fd88b3da9de7d8"><div class="ttname"><a href="class_cntr_servico_pessoas.html#a8d5767cdf1418100c1fd88b3da9de7d8">CntrServicoPessoas::criar</a></div><div class="ttdeci">bool criar(Pessoa pessoa)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:12</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_ac23dbee119735bb5f19229d911fd3cf6"><div class="ttname"><a href="class_cntr_servico_pessoas.html#ac23dbee119735bb5f19229d911fd3cf6">CntrServicoPessoas::autenticar</a></div><div class="ttdeci">bool autenticar(Email email, Senha senha)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:3</div></div>
+<div class="ttc" id="aclass_cntr_servico_pessoas_html_adee041be81461232763e5adc4c8b5f3c"><div class="ttname"><a href="class_cntr_servico_pessoas.html#adee041be81461232763e5adc4c8b5f3c">CntrServicoPessoas::ler</a></div><div class="ttdeci">bool ler(Pessoa *pessoa)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:16</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html"><div class="ttname"><a href="class_cntr_servico_projetos.html">CntrServicoProjetos</a></div><div class="ttdef"><b>Definição</b> ControladorasServico.hpp:29</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html_a179b2ef58d118b3b0ff6cec69673791f"><div class="ttname"><a href="class_cntr_servico_projetos.html#a179b2ef58d118b3b0ff6cec69673791f">CntrServicoProjetos::criar</a></div><div class="ttdeci">bool criar(Projeto projeto)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:43</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html_a34ef997958ff6590ed9bb7d7d0769ed5"><div class="ttname"><a href="class_cntr_servico_projetos.html#a34ef997958ff6590ed9bb7d7d0769ed5">CntrServicoProjetos::listar</a></div><div class="ttdeci">list&lt; Identificador &gt; listar()</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:76</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html_a7a84212613b944d1f8d240e344fd3cf1"><div class="ttname"><a href="class_cntr_servico_projetos.html#a7a84212613b944d1f8d240e344fd3cf1">CntrServicoProjetos::atualizar</a></div><div class="ttdeci">bool atualizar(Projeto projeto)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:56</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html_afce5601ea455b776309185c55daca61e"><div class="ttname"><a href="class_cntr_servico_projetos.html#afce5601ea455b776309185c55daca61e">CntrServicoProjetos::excluir</a></div><div class="ttdeci">bool excluir(Identificador identificador)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:66</div></div>
+<div class="ttc" id="aclass_cntr_servico_projetos_html_affb425cc136810f796781b8f213e6079"><div class="ttname"><a href="class_cntr_servico_projetos.html#affb425cc136810f796781b8f213e6079">CntrServicoProjetos::ler</a></div><div class="ttdeci">bool ler(Projeto *projeto)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:52</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html"><div class="ttname"><a href="class_cntr_servico_quadros.html">CntrServicoQuadros</a></div><div class="ttdef"><b>Definição</b> ControladorasServico.hpp:44</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html_a0a5103876bddfd61449286e41b6b71e7"><div class="ttname"><a href="class_cntr_servico_quadros.html#a0a5103876bddfd61449286e41b6b71e7">CntrServicoQuadros::excluir</a></div><div class="ttdeci">bool excluir(Identificador identificador)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:108</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html_a309322e5c05323f0436d81ec7e594a6a"><div class="ttname"><a href="class_cntr_servico_quadros.html#a309322e5c05323f0436d81ec7e594a6a">CntrServicoQuadros::atualizar</a></div><div class="ttdeci">bool atualizar(Quadro quadro)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:98</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html_a61de1007db2b11ab67a7aabc44d07a8a"><div class="ttname"><a href="class_cntr_servico_quadros.html#a61de1007db2b11ab67a7aabc44d07a8a">CntrServicoQuadros::ler</a></div><div class="ttdeci">bool ler(Quadro *quadro)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:94</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html_a8257f3324b1307a990650109cad66b10"><div class="ttname"><a href="class_cntr_servico_quadros.html#a8257f3324b1307a990650109cad66b10">CntrServicoQuadros::criar</a></div><div class="ttdeci">bool criar(Quadro quadro)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:85</div></div>
+<div class="ttc" id="aclass_cntr_servico_quadros_html_a90ed85e157d5e9475e0b3a425359b66d"><div class="ttname"><a href="class_cntr_servico_quadros.html#a90ed85e157d5e9475e0b3a425359b66d">CntrServicoQuadros::listar</a></div><div class="ttdeci">list&lt; Identificador &gt; listar(Identificador identificadorProjeto)</div><div class="ttdef"><b>Definição</b> ControladorasServico.cpp:118</div></div>
+<div class="ttc" id="aclass_email_html"><div class="ttname"><a href="class_email.html">Email</a></div><div class="ttdef"><b>Definição</b> E-mail.hpp:20</div></div>
+<div class="ttc" id="aclass_i_servico_cartoes_html"><div class="ttname"><a href="class_i_servico_cartoes.html">IServicoCartoes</a></div><div class="ttdef"><b>Definição</b> Interfaces.hpp:396</div></div>
+<div class="ttc" id="aclass_i_servico_pessoas_html"><div class="ttname"><a href="class_i_servico_pessoas.html">IServicoPessoas</a></div><div class="ttdef"><b>Definição</b> Interfaces.hpp:168</div></div>
+<div class="ttc" id="aclass_i_servico_projetos_html"><div class="ttname"><a href="class_i_servico_projetos.html">IServicoProjetos</a></div><div class="ttdef"><b>Definição</b> Interfaces.hpp:252</div></div>
+<div class="ttc" id="aclass_i_servico_quadros_html"><div class="ttname"><a href="class_i_servico_quadros.html">IServicoQuadros</a></div><div class="ttdef"><b>Definição</b> Interfaces.hpp:322</div></div>
+<div class="ttc" id="aclass_identificador_html"><div class="ttname"><a href="class_identificador.html">Identificador</a></div><div class="ttdef"><b>Definição</b> Identificador.hpp:17</div></div>
+<div class="ttc" id="aclass_pessoa_html"><div class="ttname"><a href="class_pessoa.html">Pessoa</a></div><div class="ttdef"><b>Definição</b> Pessoa.hpp:17</div></div>
+<div class="ttc" id="aclass_projeto_html"><div class="ttname"><a href="class_projeto.html">Projeto</a></div><div class="ttdef"><b>Definição</b> Projeto.hpp:18</div></div>
+<div class="ttc" id="aclass_quadro_html"><div class="ttname"><a href="class_quadro.html">Quadro</a></div><div class="ttdef"><b>Definição</b> Quadro.hpp:16</div></div>
+<div class="ttc" id="aclass_senha_html"><div class="ttname"><a href="class_senha.html">Senha</a></div><div class="ttdef"><b>Definição</b> Senha.hpp:17</div></div>
+<div class="ttc" id="aclass_timestamp_html"><div class="ttname"><a href="class_timestamp.html">Timestamp</a></div><div class="ttdef"><b>Definição</b> Timestamp.hpp:20</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

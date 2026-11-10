@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Documentação Trabalho final TP1: Referência da Classe Timestamp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Documentação Trabalho final TP1<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": false,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Membros Públicos</a> &#124;
+<a href="class_timestamp-members.html">Lista de todos os Membros</a>  </div>
+  <div class="headertitle"><div class="title">Referência da Classe Timestamp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_timestamp_8hpp_source.html">Timestamp.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Membros Públicos</h2></td></tr>
+<tr class="memitem:a3bb127c1aebbdfdf09e1ebb39ff447bb" id="r_a3bb127c1aebbdfdf09e1ebb39ff447bb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3bb127c1aebbdfdf09e1ebb39ff447bb">setValor</a> (std::string valor)</td></tr>
+<tr class="memitem:a3dba4e0f4c64774270dc3d05e1244e12" id="r_a3dba4e0f4c64774270dc3d05e1244e12"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a3dba4e0f4c64774270dc3d05e1244e12">getValor</a> () const</td></tr>
+<tr class="memitem:ab580b4d4d4d0ef10ce78325d26b332ee" id="r_ab580b4d4d4d0ef10ce78325d26b332ee"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ab580b4d4d4d0ef10ce78325d26b332ee">converterParaMinutos</a> () const</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Padrão para representação de data e horário.</p>
+<p>Regras de formato:</p>
+<ul>
+<li>Formato DIA-MES-ANO-HORARIO, por exemplo 29-FEV-2024-13:45.</li>
+<li>DIA de 1 a 31, com um ou dois dígitos.</li>
+<li>MES é JAN, FEV, MAR, ABR, MAI, JUN, JUL, AGO, SET, OUT, NOV ou DEZ.</li>
+<li>ANO de 2000 a 2099.</li>
+<li>HORARIO de 00:00 a 23:59.</li>
+<li>Data existente, considerando anos bissextos. </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentação das funções</h2>
+<a id="ab580b4d4d4d0ef10ce78325d26b332ee" name="ab580b4d4d4d0ef10ce78325d26b332ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab580b4d4d4d0ef10ce78325d26b332ee">&#9670;&#160;</a></span>converterParaMinutos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Timestamp::converterParaMinutos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retorna quantidade de minutos desde 1-JAN-2000-00:00.</p>
+<p>Lança exceção caso não exista data e horário armazenados.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Quantidade de minutos.</dd></dl>
+<dl class="exception"><dt>Exceções</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>                                          {</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> p;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (valor.length() == 16){</div>
+<div class="line"><span class="lineno">   99</span>        p = 1;</div>
+<div class="line"><span class="lineno">  100</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (valor.length() == 17){</div>
+<div class="line"><span class="lineno">  101</span>        p = 2;</div>
+<div class="line"><span class="lineno">  102</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">throw</span> invalid_argument(<span class="stringliteral">&quot;Timestamp sem valor.&quot;</span>);</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordtype">int</span> ano = numero(valor, p + 5, 4);</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordtype">int</span> mes = indiceMes(valor, p);</div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordtype">int</span> dias = numero(valor, 0, p) - 1;</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> a = 2000; a &lt; ano; a++){</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">if</span> (bissexto(a)){</div>
+<div class="line"><span class="lineno">  112</span>            dias = dias + 366;</div>
+<div class="line"><span class="lineno">  113</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  114</span>            dias = dias + 365;</div>
+<div class="line"><span class="lineno">  115</span>        }</div>
+<div class="line"><span class="lineno">  116</span>    }</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> m = 0; m &lt; mes; m++){</div>
+<div class="line"><span class="lineno">  118</span>        dias = dias + diasNoMes(m, ano);</div>
+<div class="line"><span class="lineno">  119</span>    }</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">return</span> dias * 1440 + numero(valor, p + 10, 2) * 60 + numero(valor, p + 13, 2);</div>
+<div class="line"><span class="lineno">  122</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3dba4e0f4c64774270dc3d05e1244e12" name="a3dba4e0f4c64774270dc3d05e1244e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dba4e0f4c64774270dc3d05e1244e12">&#9670;&#160;</a></span>getValor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Timestamp::getValor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retorna data e horário.</p>
+<dl class="section return"><dt>Retorna</dt><dd>Data e horário. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   92</span>                                 {</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> valor;</div>
+<div class="line"><span class="lineno">   94</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3bb127c1aebbdfdf09e1ebb39ff447bb" name="a3bb127c1aebbdfdf09e1ebb39ff447bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb127c1aebbdfdf09e1ebb39ff447bb">&#9670;&#160;</a></span>setValor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Timestamp::setValor </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>valor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Armazena data e horário caso os mesmos sejam válidos.</p>
+<p>Lança exceção caso a data ou o horário sejam inválidos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">valor</td><td>Data e horário.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceções</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>                                    {</div>
+<div class="line"><span class="lineno">   88</span>    validar(valor);</div>
+<div class="line"><span class="lineno">   89</span>    this-&gt;valor = valor;</div>
+<div class="line"><span class="lineno">   90</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>A documentação para essa classe foi gerada a partir dos seguintes arquivos:<ul>
+<li>/Users/Vinny/Programação/Técnicas de Progrmação 1/trabalho-tp1/Dominios/<a class="el" href="_timestamp_8hpp_source.html">Timestamp.hpp</a></li>
+<li>/Users/Vinny/Programação/Técnicas de Progrmação 1/trabalho-tp1/Dominios/<a class="el" href="_timestamp_8cpp.html">Timestamp.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>
