@@ -76,25 +76,6 @@ class Tela{
         static bool ehGestor(IServicoPessoas *cntr, Email email);
 
 ///
-/// Retorna o texto ou um traço caso o texto esteja vazio.
-///
-/// @param valor Texto.
-///
-/// @return Texto ou traço.
-///
-
-        static string valorOuTraco(string valor);
-
-///
-/// Apresenta tempo em dias, horas e minutos.
-///
-/// @param rotulo Rótulo.
-/// @param minutos Tempo em minutos.
-///
-
-        static void mostrarTempo(string rotulo, int minutos);
-
-///
 /// Apresenta dados de projeto.
 ///
 /// @param projeto Projeto.
