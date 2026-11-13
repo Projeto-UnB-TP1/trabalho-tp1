@@ -53,18 +53,6 @@ bool Tela::ehGestor(IServicoPessoas *cntr, Email email){
     return pessoa.getPapel().getValor() == "GESTOR";
 }
 
-string Tela::valorOuTraco(string valor){
-    if (valor.length() == 0){
-        return "-";
-    }
-    return valor;
-}
-
-void Tela::mostrarTempo(string rotulo, int minutos){
-    cout << rotulo << minutos / 1440 << " dia(s), " << (minutos % 1440) / 60 << " hora(s) e "
-         << minutos % 60 << " minuto(s)." << endl;
-}
-
 void Tela::mostrarProjeto(Projeto projeto){
     cout << "Identificador: " << projeto.getIdentificador().getValor() << endl;
     cout << "Nome         : " << projeto.getNome().getValor() << endl;
@@ -88,9 +76,9 @@ void Tela::mostrarCartao(CartaoDeAtividade cartao){
     cout << "Prioridade   : " << cartao.getPrioridade().getValor() << endl;
     cout << "Tamanho      : " << cartao.getTamanho().getValor() << endl;
     cout << "Estado       : " << cartao.getEstado().getValor() << endl;
-    cout << "Entrada      : " << Tela::valorOuTraco(cartao.getEntrada().getValor()) << endl;
-    cout << "Inicio       : " << Tela::valorOuTraco(cartao.getInicio().getValor()) << endl;
-    cout << "Termino      : " << Tela::valorOuTraco(cartao.getTermino().getValor()) << endl;
+    cout << "Entrada      : " << cartao.getEntrada().getValor() << endl;
+    cout << "Inicio       : " << cartao.getInicio().getValor() << endl;
+    cout << "Termino      : " << cartao.getTermino().getValor() << endl;
     cout << "Quadro       : " << cartao.getIdentificadorQuadro().getValor() << endl;
 }
 
@@ -278,26 +266,21 @@ void CntrApresentacaoPessoas::atualizar(Email email){
         cout << "Falha: pessoa nao encontrada." << endl;
         return;
     }
-    cout << "Nome atual: " << pessoa.getNome().getValor() << endl;
-    cout << "Digite os novos valores (Enter mantem o atual)." << endl;
+    cout << "Digite os novos dados." << endl;
     string campoNome = Tela::lerCampo("Nome : ");
     string campoSenha = Tela::lerCampo("Senha: ");
     Nome nome;
     Senha senha;
     try{
-        if (campoNome.length() > 0){
-            nome.setValor(campoNome);
-            pessoa.setNome(nome);
-        }
-        if (campoSenha.length() > 0){
-            senha.setValor(campoSenha);
-            pessoa.setSenha(senha);
-        }
+        nome.setValor(campoNome);
+        senha.setValor(campoSenha);
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
         return;
     }
+    pessoa.setNome(nome);
+    pessoa.setSenha(senha);
     if (cntr->atualizar(pessoa)){
         cout << "Conta atualizada." << endl;
     } else {
@@ -306,16 +289,11 @@ void CntrApresentacaoPessoas::atualizar(Email email){
 }
 
 bool CntrApresentacaoPessoas::excluir(Email email){
-    string confirmacao = Tela::lerCampo("Confirma a exclusao da sua conta? (S/N): ");
-    if (confirmacao != "S" && confirmacao != "s"){
-        cout << "Exclusao cancelada." << endl;
-        return false;
-    }
     if (cntr->excluir(email)){
-        cout << "Conta excluida. Sessao encerrada." << endl;
+        cout << "Conta excluida." << endl;
         return true;
     }
-    cout << "Falha: a pessoa e gestora de algum projeto." << endl;
+    cout << "Falha ao excluir a conta." << endl;
     return false;
 }
 
@@ -438,7 +416,7 @@ void CntrApresentacaoProjetos::atualizar(){
         return;
     }
     Tela::mostrarProjeto(projeto);
-    cout << "Digite os novos valores (Enter mantem o atual)." << endl;
+    cout << "Digite os novos dados." << endl;
     string campoNome = Tela::lerCampo("Nome     : ");
     string campoDescricao = Tela::lerCampo("Descricao: ");
     string campoInicio = Tela::lerCampo("Inicio   : ");
@@ -448,27 +426,19 @@ void CntrApresentacaoProjetos::atualizar(){
     Timestamp inicio;
     Timestamp termino;
     try{
-        if (campoNome.length() > 0){
-            nome.setValor(campoNome);
-            projeto.setNome(nome);
-        }
-        if (campoDescricao.length() > 0){
-            descricao.setValor(campoDescricao);
-            projeto.setDescricao(descricao);
-        }
-        if (campoInicio.length() > 0){
-            inicio.setValor(campoInicio);
-            projeto.setInicio(inicio);
-        }
-        if (campoTermino.length() > 0){
-            termino.setValor(campoTermino);
-            projeto.setTermino(termino);
-        }
+        nome.setValor(campoNome);
+        descricao.setValor(campoDescricao);
+        inicio.setValor(campoInicio);
+        termino.setValor(campoTermino);
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
         return;
     }
+    projeto.setNome(nome);
+    projeto.setDescricao(descricao);
+    projeto.setInicio(inicio);
+    projeto.setTermino(termino);
     if (cntr->atualizar(projeto)){
         cout << "Projeto atualizado." << endl;
     } else {
@@ -484,7 +454,7 @@ void CntrApresentacaoProjetos::excluir(){
     if (cntr->excluir(identificador)){
         cout << "Projeto excluido." << endl;
     } else {
-        cout << "Falha: projeto nao encontrado ou possui quadros." << endl;
+        cout << "Falha ao excluir o projeto." << endl;
     }
 }
 
@@ -565,7 +535,7 @@ void CntrApresentacaoQuadros::criar(){
     if (cntr->criar(quadro)){
         cout << "Quadro criado." << endl;
     } else {
-        cout << "Falha: projeto nao encontrado ou identificador ja cadastrado." << endl;
+        cout << "Falha ao criar o quadro." << endl;
     }
 }
 
@@ -595,25 +565,21 @@ void CntrApresentacaoQuadros::atualizar(){
         return;
     }
     Tela::mostrarQuadro(quadro);
-    cout << "Digite os novos valores (Enter mantem o atual)." << endl;
+    cout << "Digite os novos dados." << endl;
     string campoNome = Tela::lerCampo("Nome      : ");
     string campoLimite = Tela::lerCampo("Limite WIP: ");
     Nome nome;
     Limite limite;
     try{
-        if (campoNome.length() > 0){
-            nome.setValor(campoNome);
-            quadro.setNome(nome);
-        }
-        if (campoLimite.length() > 0){
-            limite.setValor(Tela::converterNumero(campoLimite));
-            quadro.setLimite(limite);
-        }
+        nome.setValor(campoNome);
+        limite.setValor(Tela::converterNumero(campoLimite));
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
         return;
     }
+    quadro.setNome(nome);
+    quadro.setLimite(limite);
     if (cntr->atualizar(quadro)){
         cout << "Quadro atualizado." << endl;
     } else {
@@ -629,7 +595,7 @@ void CntrApresentacaoQuadros::excluir(){
     if (cntr->excluir(identificador)){
         cout << "Quadro excluido." << endl;
     } else {
-        cout << "Falha: quadro nao encontrado ou possui cartoes." << endl;
+        cout << "Falha ao excluir o quadro." << endl;
     }
 }
 
@@ -760,7 +726,7 @@ void CntrApresentacaoCartoes::criar(){
     if (cntr->criar(cartao)){
         cout << "Cartao criado na coluna A FAZER." << endl;
     } else {
-        cout << "Falha: quadro nao encontrado ou identificador ja cadastrado." << endl;
+        cout << "Falha ao criar o cartao." << endl;
     }
 }
 
@@ -790,7 +756,7 @@ void CntrApresentacaoCartoes::atualizar(){
         return;
     }
     Tela::mostrarCartao(cartao);
-    cout << "Digite os novos valores (Enter mantem o atual)." << endl;
+    cout << "Digite os novos dados." << endl;
     string campoNome = Tela::lerCampo("Nome      : ");
     string campoDescricao = Tela::lerCampo("Descricao : ");
     string campoPrioridade = Tela::lerCampo("Prioridade: ");
@@ -800,27 +766,19 @@ void CntrApresentacaoCartoes::atualizar(){
     Prioridade prioridade;
     Tamanho tamanho;
     try{
-        if (campoNome.length() > 0){
-            nome.setValor(campoNome);
-            cartao.setNome(nome);
-        }
-        if (campoDescricao.length() > 0){
-            descricao.setValor(campoDescricao);
-            cartao.setDescricao(descricao);
-        }
-        if (campoPrioridade.length() > 0){
-            prioridade.setValor(campoPrioridade);
-            cartao.setPrioridade(prioridade);
-        }
-        if (campoTamanho.length() > 0){
-            tamanho.setValor(campoTamanho);
-            cartao.setTamanho(tamanho);
-        }
+        nome.setValor(campoNome);
+        descricao.setValor(campoDescricao);
+        prioridade.setValor(campoPrioridade);
+        tamanho.setValor(campoTamanho);
     }
     catch(invalid_argument &exp){
         cout << "Dado invalido: " << exp.what() << endl;
         return;
     }
+    cartao.setNome(nome);
+    cartao.setDescricao(descricao);
+    cartao.setPrioridade(prioridade);
+    cartao.setTamanho(tamanho);
     if (cntr->atualizar(cartao)){
         cout << "Cartao atualizado." << endl;
     } else {
@@ -851,7 +809,7 @@ void CntrApresentacaoCartoes::listar(){
 void CntrApresentacaoCartoes::mover(){
     Identificador identificador;
     Timestamp momento;
-    cout << endl << "MOVER CARTAO (A FAZER -> FAZENDO -> FEITO)" << endl;
+    cout << endl << "MOVER CARTAO" << endl;
     string campoIdentificador = Tela::lerCampo("Identificador do cartao            : ");
     string campoMomento = Tela::lerCampo("Horario (ex.: 06-MAR-2026-14:30)   : ");
     try{
@@ -862,14 +820,11 @@ void CntrApresentacaoCartoes::mover(){
         cout << "Dado invalido: " << exp.what() << endl;
         return;
     }
-    if (!cntr->mover(identificador, momento)){
-        cout << "Falha: cartao nao encontrado, ja esta em FEITO, quadro no limite de WIP ou horario anterior ao registrado." << endl;
-        return;
+    if (cntr->mover(identificador, momento)){
+        cout << "Cartao movido." << endl;
+    } else {
+        cout << "Falha ao mover o cartao." << endl;
     }
-    CartaoDeAtividade cartao;
-    cartao.setIdentificador(identificador);
-    cntr->ler(&cartao);
-    cout << "Cartao movido para " << cartao.getEstado().getValor() << "." << endl;
 }
 
 void CntrApresentacaoCartoes::lerTempoCiclo(){
@@ -879,9 +834,9 @@ void CntrApresentacaoCartoes::lerTempoCiclo(){
     }
     int minutos;
     if (cntr->lerTempoCiclo(identificador, &minutos)){
-        Tela::mostrarTempo("Tempo de ciclo: ", minutos);
+        cout << "Tempo de ciclo: " << minutos << " minutos." << endl;
     } else {
-        cout << "Falha: cartao nao encontrado ou ainda nao esta em FEITO." << endl;
+        cout << "Falha ao ler o tempo." << endl;
     }
 }
 
@@ -892,9 +847,9 @@ void CntrApresentacaoCartoes::lerTempoCicloMedio(){
     }
     int minutos;
     if (cntr->lerTempoCicloMedio(identificadorQuadro, &minutos)){
-        Tela::mostrarTempo("Tempo de ciclo medio: ", minutos);
+        cout << "Tempo de ciclo medio: " << minutos << " minutos." << endl;
     } else {
-        cout << "Falha: o quadro nao tem cartoes em FEITO." << endl;
+        cout << "Falha ao ler o tempo medio." << endl;
     }
 }
 
@@ -905,9 +860,9 @@ void CntrApresentacaoCartoes::lerLeadTime(){
     }
     int minutos;
     if (cntr->lerLeadTime(identificador, &minutos)){
-        Tela::mostrarTempo("Lead time: ", minutos);
+        cout << "Lead time: " << minutos << " minutos." << endl;
     } else {
-        cout << "Falha: cartao nao encontrado ou ainda nao esta em FEITO." << endl;
+        cout << "Falha ao ler o tempo." << endl;
     }
 }
 
@@ -918,9 +873,9 @@ void CntrApresentacaoCartoes::lerLeadTimeMedio(){
     }
     int minutos;
     if (cntr->lerLeadTimeMedio(identificadorQuadro, &minutos)){
-        Tela::mostrarTempo("Lead time medio: ", minutos);
+        cout << "Lead time medio: " << minutos << " minutos." << endl;
     } else {
-        cout << "Falha: o quadro nao tem cartoes em FEITO." << endl;
+        cout << "Falha ao ler o tempo medio." << endl;
     }
 }
 
@@ -931,7 +886,7 @@ void CntrApresentacaoCartoes::lerWIP(){
     }
     int quantidade;
     if (cntr->lerWIP(identificadorQuadro, &quantidade)){
-        cout << "WIP do quadro: " << quantidade << " cartao(oes) em FAZENDO." << endl;
+        cout << "WIP: " << quantidade << endl;
     } else {
         cout << "Falha: quadro nao encontrado." << endl;
     }
