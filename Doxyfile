@@ -1,6 +1,7 @@
 PROJECT_NAME           = "Sistema Kanban - TP1"
 PROJECT_BRIEF          = "Gestao de projetos com o metodo Kanban - CIC0197 Tecnicas de Programacao 1"
-OUTPUT_DIRECTORY       = documentacao
+OUTPUT_DIRECTORY       = .
+HTML_OUTPUT            = docs
 OUTPUT_LANGUAGE        = Brazilian
 INPUT                  = Dominios Entidades Interfaces Servicos Apresentacao Builders.hpp
 FILE_PATTERNS          = *.hpp

@@ -3,6 +3,5 @@ obj/
 *.layout
 *.depend
 .DS_Store
-docs/
 orientações/
 arquitetura/*.html
